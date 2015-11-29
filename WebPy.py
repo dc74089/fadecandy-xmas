@@ -11,7 +11,7 @@ def setState(newstate = 0):
 
 def setstateifint(newstate):
     try:
-        statetopset = int(newstate)
+        statetoset = int(newstate)
         lc.setstate(statetoset)
         print state
     except ValueError:
