@@ -34,7 +34,7 @@ class LightController(threading.Thread):
 
     def run(self):
         while(True):
-            print self.state
+            #print self.state
 
     def fade(self):
         pixels = []
