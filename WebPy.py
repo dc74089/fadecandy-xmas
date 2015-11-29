@@ -18,4 +18,4 @@ def setstateifint(newstate):
         print "Not an int"
     
 lc.start()
-run()
+run(host='0.0.0.0', port=80)
