@@ -1,6 +1,6 @@
 from bottle import route, run, template
 import traceback
-from LightControl import LightController
+from lightcontrol import LightController
 
 lc = LightController()
 
@@ -13,7 +13,7 @@ def setstateifint(newstate):
     try:
         statetoset = int(newstate)
         lc.setstate(statetoset)
-        print state
+        print "New state: %i" % statetoset
     except ValueError:
         print "Not an int"
     

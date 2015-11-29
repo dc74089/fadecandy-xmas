@@ -29,12 +29,13 @@ class LightController(threading.Thread):
             # appears later
             print('WARNING: could not connect')
 
-    def setstate(state):
+    def setstate(self, state):
         self.state = state
 
     def run(self):
         while(True):
             #print self.state
+            pass
 
     def fade(self):
         pixels = []
