@@ -1,8 +1,8 @@
 from bottle import route, run, template
 import traceback
-from lightcontrol import LightController
+from lightcontrol import *
 
-lc = LightController()
+gc = GarageController()
 
 @route('/opc/setstate/:newstate')
 def setState(newstate = 0):
@@ -22,10 +22,10 @@ def printStates():
 def setstateifint(newstate):
     try:
         statetoset = int(newstate)
-        lc.setstate(statetoset)
+        gc.setstate(statetoset)
         print "New state: %i" % statetoset
     except ValueError:
         print "Not an int"
     
-lc.start()
+gc.start()
 run(host='0.0.0.0', port=1150)
