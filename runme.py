@@ -50,4 +50,4 @@ def set_state_if_int(newstate):
 
 if __name__ == '__main__':
     app.debug = False
-    app.run(port=1150)
+    app.run(host="0.0.0.0", port=1150)
