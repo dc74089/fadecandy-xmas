@@ -1,6 +1,5 @@
 from flask import Flask, request, redirect
 from flask.templating import render_template
-
 from lightcontrol import LightController
 
 app = Flask(__name__)
@@ -20,11 +19,16 @@ statics[101] = "White"
 
 @app.route('/')
 def index():
-    return render_template("lightactivation.html", alist = animations, slist = statics)
+    return render_template("lightactivation.html", alist=animations, slist=statics)
+
+
+@app.route('/test')
+def test():
+    return "test"
 
 
 @app.route('/setstate/:newstate')
-def set_state(newstate = 0):
+def set_state(newstate=0):
     set_state_if_int(newstate)
     return redirect('/')
 
@@ -46,4 +50,4 @@ def set_state_if_int(newstate):
 
 if __name__ == '__main__':
     app.debug = False
-    app.run(port = 1150)
+    app.run(port=1150)
