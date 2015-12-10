@@ -1,0 +1,33 @@
+{% extends "wrapper.html" %}
+
+{% block content_active %}
+    <form action="/setstate" method="get">
+        <h2>Animations</h2>
+        {% for animation in alist %}
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radio + {{ animation }}">
+                <input class="mdl-radio__button" id="radio + {{ animation }}" name="routine" type="radio"
+                       value="{{ animation }}">
+                <span class="mdl-radio__label">{{ alist[animation] }}</span>
+            </label>
+            <br>
+        {% endfor %}
+
+        <h2>Statics</h2>
+        {% for static in slist %}
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radio + {{ static }}">
+                <input class="mdl-radio__button" id="radio + {{ static }}" name="routine" type="radio"
+                       value="{{ static }}">
+                <span class="mdl-radio__label">{{ slist[static] }}</span>
+            </label>
+            <br>
+        {% endfor %}
+
+        <br><br>
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                onclick="submit">
+            Go
+        </button>
+    </form>
+
+{% endblock %}

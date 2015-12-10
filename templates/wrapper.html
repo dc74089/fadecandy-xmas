@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canora Lights</title>
+
+    <!-- Material Design! -->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.green-blue.min.css"/>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <!-- End Material Design -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='mdlhelper.css') }}"/>
+</head>
+<body>
+<!-- Simple header with fixed tabs. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+            mdl-layout--fixed-tabs">
+    <header class="mdl-layout__header">
+
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+            <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Light Control</a>
+            <a href="#fixed-tab-2" class="mdl-layout__tab">About us</a>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active content" id="fixed-tab-1">
+            <div class="page-content">
+                <div class="demo-container mdl-grid">
+                    <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                        {% block content_active %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mdl-layout__tab-panel content" id="fixed-tab-2">
+            <div class="page-content">
+                <div class="demo-container mdl-grid">
+                    <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                        <h1>The Canora Family Light Show</h1>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nunc velit, iaculis non laoreet non, consectetur ut quam. Fusce nec tristique leo. Vestibulum pharetra, purus non auctor lacinia, est leo scelerisque lorem, in imperdiet est diam non risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam eros augue, aliquet at gravida vitae, facilisis in justo. Nulla hendrerit consequat erat dapibus tincidunt. Suspendisse id fringilla urna. Mauris ultrices ex eu est pellentesque interdum ut id quam. Praesent maximus odio vitae porttitor posuere. Fusce purus nisi, aliquet sed neque sit amet, ullamcorper venenatis metus. Quisque scelerisque molestie elit, id convallis nisi blandit non. Proin aliquam vitae lectus eget ullamcorper. Mauris vehicula orci vitae scelerisque efficitur. Nam dignissim laoreet neque eget maximus. Aliquam erat volutpat. Duis varius velit odio, ac pretium libero efficitur vitae.</p>
+                        <p>Aliquam ac mi eget libero elementum bibendum sed at mi. Nullam blandit vehicula convallis. Nam ut consequat metus. Proin placerat dolor diam, id placerat ipsum sodales vel. Mauris molestie semper orci eu sodales. Maecenas dignissim eros est, in luctus felis posuere consectetur. Integer iaculis, leo quis dictum consequat, diam est varius ex, imperdiet pharetra metus purus a orci.</p>
+                        <p>Aenean mollis est eros, a bibendum ex porta nec. Proin a sapien pretium, molestie ipsum vel, dignissim velit. Aliquam ligula ligula, interdum quis velit eget, accumsan luctus mauris. Aliquam vehicula posuere iaculis. Pellentesque quis velit risus. In vitae viverra risus. Sed at velit sollicitudin, faucibus eros vel, maximus elit.</p>
+                        <p>Aenean nec velit quis lacus condimentum tristique. Morbi aliquam non nibh et elementum. Integer vitae tristique nibh. Proin ipsum arcu, dignissim at porta sit amet, molestie eget tellus. Etiam ultrices eget diam ut ornare. Nunc vel gravida neque. Aenean feugiat sodales odio, et luctus nunc auctor ac. Curabitur maximus rhoncus magna, id sagittis leo scelerisque nec. Nulla facilisi. Duis eget eros mi. Etiam vulputate, neque ut volutpat rutrum, lacus dolor congue leo, at efficitur nisi tortor vitae leo.</p>
+                        <p>Maecenas tristique accumsan libero in maximus. Mauris dignissim augue vitae dapibus accumsan. Maecenas sit amet ipsum sollicitudin, vehicula eros eu, posuere nisi. In lacus turpis, varius ac auctor nec, auctor vel arcu. Sed luctus convallis vehicula. Donec lobortis condimentum felis. Mauris eleifend tempor neque et accumsan. Praesent nunc risus, semper ornare eleifend sed, accumsan convallis nibh. Aenean quis pretium augue. Curabitur auctor ac erat at hendrerit. Etiam eu pretium ante. Vivamus in orci orci. Suspendisse sollicitudin pellentesque elit eget feugiat. Maecenas fermentum ultrices ultricies. Ut consectetur feugiat risus quis imperdiet. Fusce eu pellentesque ante.</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>

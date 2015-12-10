@@ -1,36 +1,49 @@
-from bottle import route, run, template
-import traceback
+from flask import Flask, request, redirect
+from flask.templating import render_template
+
 from lightcontrol import LightController
 
+app = Flask(__name__)
 lc = LightController()
+animations = {}
+statics = {}
 
-@route('/opc/setstate/:newstate')
-def setState(newstate = 0):
-    setstateifint(newstate)
-    return newstate
+animations[0] = "All Off"
+animations[1] = "Red/Green Fade"
+animations[2] = "Red/Green Wipe"
+animations[3] = "White Twinkle"
+animations[4] = "Christmas Twinkle"
 
-@route('/opc/getstates')
-def listStates():
-    return '''
-{
-    0 : "All Off",
-    1 : "Red/Green Fade",
-    2 : "Red/Green Wipe",
-    3 : "White Twinkle",
-    4 : "Red/Green/White Twinkle",
-    5 : "Christmas Cylon",
-    100 : "Static Red/Green",
-    101 : "White Static"
-}
-    '''
+statics[100] = "Red/Green"
+statics[101] = "White"
 
-def setstateifint(newstate):
+
+@app.route('/')
+def index():
+    return render_template("lightactivation.html", alist = animations, slist = statics)
+
+
+@app.route('/setstate/:newstate')
+def set_state(newstate = 0):
+    set_state_if_int(newstate)
+    return redirect('/')
+
+
+@app.route('/setstate')
+def set_state_from_args():
+    set_state_if_int(request.args['routine'])
+    return redirect('/')
+
+
+def set_state_if_int(newstate):
     try:
-        statetoset = int(newstate)
-        lc.setstate(statetoset)
-        print "New state: %i" % statetoset
+        state_to_set = int(newstate)
+        lc.setstate(state_to_set)
+        print "New state: %i" % state_to_set
     except ValueError:
         print "Not an int"
-    
-lc.start()
-run(host='0.0.0.0', port=1150)
+
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run()

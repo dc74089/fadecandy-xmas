@@ -1,8 +1,6 @@
 import threading
 import opc
 from random import randint
-import time
-import math
 from math import *
 import time
 
@@ -10,17 +8,14 @@ GRG_LEN = 150
 PERIOD = 1024
 SLEEP = 0.01
 
-pixels = []
-
 j = lambda: int(round(time.time() * 10)) % PERIOD
 theTime = lambda: int(round(time.time() * 10))
 
 
 class LightController(threading.Thread):
-    
     def __init__(self, ip='192.168.0.123:7890'):
         threading.Thread.__init__(self)
-        
+
         self.fc = opc.Client(ip)
         self.state = 0
         self.direction = True
@@ -34,14 +29,14 @@ class LightController(threading.Thread):
             # We could exit here, but instead let's just print a warning
             # and then keep trying to send pixels in case the server
             # appears later
-            print('WARNING: could not connect')
+            print('WARNING: could not connect to fadecandy')
 
     def setstate(self, state):
         self.state = state
 
     def run(self):
-        while(True):
-        #Kinetics
+        while True:
+            # Kinetics
             if self.state == 1:
                 self.fade()
             elif self.state == 2:
@@ -49,24 +44,24 @@ class LightController(threading.Thread):
             elif self.state == 3:
                 self.twinkle()
             elif self.state == 4:
-                self.redGreenTwinkle()
+                self.red_green_twinkle()
             elif self.state == 5:
                 self.cylon()
-        #Statics
+                # Statics
             elif self.state == 100:
-                self.redGreenStatic()
+                self.red_green_static()
             elif self.state == 101:
-                self.whiteStatic()
-        #Finally
+                self.white_static()
+                # Finally
             else:
-                self.allOff()
+                self.all_off()
 
             time.sleep(SLEEP)
 
-    def allOff(self):
+    def all_off(self):
         pixels = []
         for i in range(GRG_LEN):
-            pixels.append((0,0,0))
+            pixels.append((0, 0, 0))
         self.fc.put_pixels(pixels)
 
     def fade(self):
@@ -103,7 +98,7 @@ class LightController(threading.Thread):
     def twinkle(self):
         pixels = []
         for i in range(GRG_LEN):
-            if(randint(0, 10000) < 20):
+            if randint(0, 10000) < 20:
                 pixels.append((255, 255, 175))
             else:
                 pixels.append((128, 140, 65))
@@ -111,31 +106,31 @@ class LightController(threading.Thread):
 
         time.sleep(0.04)
 
-    def redGreenTwinkle(self):
+    def red_green_twinkle(self):
         pixels = []
         for i in range(int(math.ceil(GRG_LEN / 6))):
             pixels.append((255, 0, 0))
-            #pixels.append((255, 0, 0))
+            # pixels.append((255, 0, 0))
 
-            if(randint(0, 10000) < 20):
+            if randint(0, 10000) < 20:
                 pixels.append((255, 255, 175))
             else:
                 pixels.append((128, 140, 65))
 
-            if(randint(0, 10000) < 20):
+            if randint(0, 10000) < 20:
                 pixels.append((255, 255, 175))
             else:
                 pixels.append((128, 140, 65))
-                
+
             pixels.append((0, 255, 0))
-            #pixels.append((0, 255, 0))
+            # pixels.append((0, 255, 0))
 
-            if(randint(0, 10000) < 20):
+            if randint(0, 10000) < 20:
                 pixels.append((255, 255, 175))
             else:
                 pixels.append((128, 140, 65))
 
-            if(randint(0, 10000) < 20):
+            if randint(0, 10000) < 20:
                 pixels.append((255, 255, 175))
             else:
                 pixels.append((128, 140, 65))
@@ -148,9 +143,9 @@ class LightController(threading.Thread):
             pixels.append((0, 0, 0))
 
         try:
-            pixels[self.position] = ((128, 0, 0))
-            pixels[self.position + 1] = ((0, 255, 0))
-            pixels[self.position + 2] = ((128, 0, 0))
+            pixels[self.position] = (128, 0, 0)
+            pixels[self.position + 1] = (0, 255, 0)
+            pixels[self.position + 2] = (128, 0, 0)
         except IndexError:
             self.direction = not self.direction
 
@@ -158,35 +153,32 @@ class LightController(threading.Thread):
 
         if self.position <= 1:
             self.direction = True
-        
+
         if self.direction:
             self.position += 1
         else:
             self.position -= 1
 
         time.sleep(0.01)
-            
 
-#Statics
+    # Statics
 
-    def redGreenStatic(self):
+    def red_green_static(self):
         pixels = []
         for i in range(int(math.ceil(GRG_LEN / 6))):
             pixels.append((255, 0, 0))
             pixels.append((255, 0, 0))
 
             pixels.append((0, 0, 0))
-                
+
             pixels.append((0, 255, 0))
             pixels.append((0, 255, 0))
 
             pixels.append((0, 0, 0))
         self.fc.put_pixels(pixels)
 
-    def whiteStatic(self):
+    def white_static(self):
         pixels = []
         for i in range(GRG_LEN):
             pixels.append((255, 255, 175))
         self.fc.put_pixels(pixels)
-            
-
