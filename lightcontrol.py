@@ -175,6 +175,7 @@ class LightController(threading.Thread):
             pixels.append((0, 255, 0))
 
             pixels.append((0, 0, 0))
+        print 'Putting Pixels'
         self.fc.put_pixels(pixels)
 
     def white_static(self):
