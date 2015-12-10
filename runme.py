@@ -45,5 +45,5 @@ def set_state_if_int(newstate):
 
 
 if __name__ == '__main__':
-    app.debug = True
+    app.debug = False
     app.run()
