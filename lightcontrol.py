@@ -69,14 +69,14 @@ class LightController(threading.Thread):
     def fade(self):
         pixels = []
         for i in range(int(ceil(GRG_LEN / 6))):
-            sin = 255 * (0.5 * sin(j() * 180.0 / PERIOD))
-            sin2 = 255 * (0.5 * sin(pi + (j() * 180.0 / PERIOD)))
+            sinval = 255 * (0.5 * sin(j() * 180.0 / PERIOD))
+            sinval2 = 255 * (0.5 * sin(pi + (j() * 180.0 / PERIOD)))
 
-            pixels.append((sin, sin2, 0))
-            pixels.append((sin, sin2, 0))
+            pixels.append((sinval, sinval2, 0))
+            pixels.append((sinval, sinval2, 0))
             pixels.append((0, 0, 0))
-            pixels.append((sin2, sin, 0))
-            pixels.append((sin2, sin, 0))
+            pixels.append((sinval2, sinval2, 0))
+            pixels.append((sinval2, sinval, 0))
             pixels.append((0, 0, 0))
 
         self.fc.put_pixels(pixels)
