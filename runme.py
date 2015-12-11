@@ -49,5 +49,6 @@ def set_state_if_int(newstate):
 
 
 if __name__ == '__main__':
+    lc.start()
     app.debug = False
     app.run(host="0.0.0.0", port=1150)
