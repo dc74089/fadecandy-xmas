@@ -75,7 +75,7 @@ class LightController(threading.Thread):
             pixels.append((sinval, sinval2, 0))
             pixels.append((sinval, sinval2, 0))
             pixels.append((0, 0, 0))
-            pixels.append((sinval2, sinval2, 0))
+            pixels.append((sinval2, sinval, 0))
             pixels.append((sinval2, sinval, 0))
             pixels.append((0, 0, 0))
 
