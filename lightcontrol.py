@@ -67,9 +67,9 @@ class LightController(threading.Thread):
 
     def fade(self):
         pixels = []
-        for i in range(int(math.ceil(GRG_LEN / 6))):
-            sin = 255 * (0.5 * math.sin(j() * 180.0 / PERIOD))
-            sin2 = 255 * (0.5 * math.sin(math.pi + (j() * 180.0 / PERIOD)))
+        for i in range(int(ceil(GRG_LEN / 6))):
+            sin = 255 * (0.5 * sin(j() * 180.0 / PERIOD))
+            sin2 = 255 * (0.5 * sin(pi + (j() * 180.0 / PERIOD)))
 
             pixels.append((sin, sin2, 0))
             pixels.append((sin, sin2, 0))
@@ -109,7 +109,7 @@ class LightController(threading.Thread):
 
     def red_green_twinkle(self):
         pixels = []
-        for i in range(int(math.ceil(GRG_LEN / 6))):
+        for i in range(int(ceil(GRG_LEN / 6))):
             pixels.append((255, 0, 0))
             # pixels.append((255, 0, 0))
 
@@ -166,7 +166,7 @@ class LightController(threading.Thread):
 
     def red_green_static(self):
         pixels = []
-        for i in range(int(math.ceil(GRG_LEN / 6))):
+        for i in range(int(ceil(GRG_LEN / 6))):
             pixels.append((255, 0, 0))
             pixels.append((255, 0, 0))
 
