@@ -33,6 +33,7 @@ class LightController(threading.Thread):
 
     def setstate(self, state):
         self.state = state
+        print 'state set to %f' % state
 
     def run(self):
         while True:
