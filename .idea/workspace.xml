@@ -53,8 +53,8 @@
       <file leaf-file-name="lightcontrol.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lightcontrol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6136364">
-              <caret line="177" column="30" selection-start-line="177" selection-start-column="30" selection-end-line="177" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.8555195">
+              <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -528,7 +528,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449791384186</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="More debug stuff.">
+      <created>1449791944434</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1449791944434</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -572,7 +578,8 @@
     <MESSAGE value="Changed to port 1150" />
     <MESSAGE value="New test endpoint" />
     <MESSAGE value="Make available on public network" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make available on public network" />
+    <MESSAGE value="More debug stuff." />
+    <option name="LAST_COMMIT_MESSAGE" value="More debug stuff." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -755,8 +762,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lightcontrol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6136364">
-          <caret line="177" column="30" selection-start-line="177" selection-start-column="30" selection-end-line="177" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.8555195">
+          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>

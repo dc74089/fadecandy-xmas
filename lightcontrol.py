@@ -47,15 +47,16 @@ class LightController(threading.Thread):
                 self.red_green_twinkle()
             elif self.state == 5:
                 self.cylon()
-                # Statics
+            # Statics
             elif self.state == 100:
                 self.red_green_static()
             elif self.state == 101:
                 self.white_static()
-                # Finally
+            # Finally
             else:
                 self.all_off()
 
+            print 'loop'
             time.sleep(SLEEP)
 
     def all_off(self):
