@@ -3,7 +3,10 @@ from flask.templating import render_template
 from lightcontrol import LightController
 
 app = Flask(__name__)
+
 lc = LightController()
+lc.start()
+
 animations = {}
 statics = {}
 
@@ -49,6 +52,5 @@ def set_state_if_int(newstate):
 
 
 if __name__ == '__main__':
-    lc.start()
     app.debug = False
     app.run(host="0.0.0.0", port=1150)

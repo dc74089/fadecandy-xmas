@@ -56,7 +56,7 @@ class LightController(threading.Thread):
             else:
                 self.all_off()
 
-            print 'loop'
+            #print 'loop'
             time.sleep(SLEEP)
 
     def all_off(self):
@@ -176,7 +176,6 @@ class LightController(threading.Thread):
             pixels.append((0, 255, 0))
 
             pixels.append((0, 0, 0))
-        print 'Putting Pixels'
         self.fc.put_pixels(pixels)
 
     def white_static(self):
