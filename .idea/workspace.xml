@@ -43,8 +43,8 @@
       <file leaf-file-name="lightcontrol.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lightcontrol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46915585">
-              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.41396105">
+              <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -487,7 +487,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449942248563</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="24h time is a thing that's used in programming">
+      <created>1449942421812</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1449942421812</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -536,7 +542,8 @@
     <MESSAGE value="Fixes." />
     <MESSAGE value="Testing code for datetimes" />
     <MESSAGE value="Auto-on and auto-off" />
-    <option name="LAST_COMMIT_MESSAGE" value="Auto-on and auto-off" />
+    <MESSAGE value="24h time is a thing that's used in programming" />
+    <option name="LAST_COMMIT_MESSAGE" value="24h time is a thing that's used in programming" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -783,8 +790,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lightcontrol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46915585">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.41396105">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
