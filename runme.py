@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect
 from flask.templating import render_template
 from lightcontrol import LightController
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -28,6 +29,11 @@ def index():
 @app.route('/test')
 def test():
     return "test"
+
+
+@app.route('/time')
+def test_time():
+    return "Datetime: %s <br> Hour: %f" % (str(datetime.now()), datetime.now().hour)
 
 
 @app.route('/setstate/:newstate')
