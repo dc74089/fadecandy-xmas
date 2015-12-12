@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a64b4da5-f753-4bc0-80e9-7583e74b77c4" name="Default" comment="Auto-on and auto-off">
+    <list default="true" id="a64b4da5-f753-4bc0-80e9-7583e74b77c4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lightcontrol.py" afterPath="$PROJECT_DIR$/lightcontrol.py" />
     </list>
@@ -43,8 +43,8 @@
       <file leaf-file-name="lightcontrol.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lightcontrol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38636363">
-              <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.46915585">
+              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -481,7 +481,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449940649425</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Auto-on and auto-off">
+      <created>1449942248563</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1449942248563</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -529,7 +535,8 @@
     <MESSAGE value="Fixes?" />
     <MESSAGE value="Fixes." />
     <MESSAGE value="Testing code for datetimes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing code for datetimes" />
+    <MESSAGE value="Auto-on and auto-off" />
+    <option name="LAST_COMMIT_MESSAGE" value="Auto-on and auto-off" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -776,8 +783,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lightcontrol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38636363">
-          <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.46915585">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>

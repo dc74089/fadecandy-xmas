@@ -13,9 +13,9 @@ SLEEP = 0.01
 HIBERNATE = 60
 
 AUTO_ON_ENABLED = True
-START_TIME = 7
+START_TIME = 19
 START_PROGRAM = 4
-BEDTIME = 11
+BEDTIME = 23
 
 j = lambda: int(round(time.time() * 10)) % PERIOD
 theTime = lambda: int(round(time.time() * 10))
