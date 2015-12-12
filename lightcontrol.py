@@ -1,4 +1,7 @@
 import threading
+
+from datetime import datetime
+
 import opc
 from random import randint
 from math import *
@@ -7,6 +10,12 @@ import time
 GRG_LEN = 150
 PERIOD = 1024
 SLEEP = 0.01
+HIBERNATE = 60
+
+AUTO_ON_ENABLED = True
+START_TIME = 7
+START_PROGRAM = 4
+BEDTIME = 11
 
 j = lambda: int(round(time.time() * 10)) % PERIOD
 theTime = lambda: int(round(time.time() * 10))
@@ -20,6 +29,7 @@ class LightController(threading.Thread):
         self.state = 0
         self.direction = True
         self.position = 0
+        self.initialized = False
 
         # Test if it can connect (optional)
         if self.fc.can_connect():
@@ -53,12 +63,22 @@ class LightController(threading.Thread):
                 self.red_green_static()
             elif self.state == 101:
                 self.white_static()
-            # Finally
+            # Default to off
             else:
                 self.all_off()
 
-            #print 'loop'
             time.sleep(SLEEP)
+
+            now = datetime.now()
+
+            if AUTO_ON_ENABLED and START_TIME <= now.hour <= BEDTIME and not self.initialized:
+                self.state = START_PROGRAM
+                self.initialized = True
+
+            if now.hour >= BEDTIME:
+                self.state = 0
+                self.initialized = False
+                time.sleep(HIBERNATE)
 
     def all_off(self):
         pixels = []
