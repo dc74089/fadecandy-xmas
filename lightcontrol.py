@@ -2,10 +2,13 @@ import threading
 
 from datetime import datetime
 
+import pytz
+
 import opc
 from random import randint
 from math import *
 import time
+from astral import Astral
 
 GRG_LEN = 150
 PERIOD = 1024
@@ -13,16 +16,17 @@ SLEEP = 0.01
 HIBERNATE = 60
 
 AUTO_ON_ENABLED = True
-START_TIME = 17
 START_PROGRAM = 4
-BEDTIME = 23
+BEDTIME_HOUR = 23
+astral = Astral()
+orlando = astral["Orlando"]
 
 j = lambda: int(round(time.time() * 10)) % PERIOD
 theTime = lambda: int(round(time.time() * 10))
 
 
 class LightController(threading.Thread):
-    def __init__(self, ip='192.168.0.123:7890'):
+    def __init__(self, ip='127.0.0.1:7890'):
         threading.Thread.__init__(self)
 
         self.fc = opc.Client(ip)
@@ -71,11 +75,17 @@ class LightController(threading.Thread):
 
             now = datetime.now()
 
-            if AUTO_ON_ENABLED and START_TIME <= now.hour <= BEDTIME and not self.initialized:
-                self.state = START_PROGRAM
+            sun = orlando.sun(date=now, local=True)
+            dusk = sun['dusk']
+
+            now = dusk.tzinfo.localize(now)
+
+            if now >= dusk and not self.initialized:
+                if self.state == 0:
+                    self.state = START_PROGRAM
                 self.initialized = True
 
-            if now.hour >= BEDTIME:
+            if now.hour >= BEDTIME_HOUR:
                 self.state = 0
                 self.initialized = False
                 time.sleep(HIBERNATE)
