@@ -2,8 +2,6 @@ import threading
 
 from datetime import datetime
 
-import pytz
-
 import opc
 from random import randint
 from math import *
