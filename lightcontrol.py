@@ -24,7 +24,7 @@ theTime = lambda: int(round(time.time() * 10))
 
 
 class LightController(threading.Thread):
-    def __init__(self, ip='127.0.0.1:7890'):
+    def __init__(self, ip='192.168.0.123:7890'):
         threading.Thread.__init__(self)
 
         self.fc = opc.Client(ip)
