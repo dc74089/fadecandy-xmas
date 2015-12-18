@@ -78,12 +78,17 @@ class LightController(threading.Thread):
 
             now = dusk.tzinfo.localize(now)
 
-            if now >= dusk and not self.initialized:
+            bedtime = dusk
+            bedtime.hour = BEDTIME_HOUR
+            bedtime.minute = 0
+            bedtime.second = 0
+
+            if dusk <= now <= bedtime and not self.initialized:
                 if self.state == 0:
                     self.state = START_PROGRAM
                 self.initialized = True
 
-            if now.hour >= BEDTIME_HOUR:
+            if now >= bedtime:
                 self.state = 0
                 self.initialized = False
                 time.sleep(HIBERNATE)
