@@ -48,7 +48,7 @@ def suninfo():
     str(sun['dusk'].tzinfo.localize(datetime.now())), str(lc.timetillon), str(lc.timetilloff))
 
 
-@app.route('/setstate', method='POST')
+@app.route('/setstate', methods=['POST'])
 def set_state_from_args():
     set_state_if_int(request.form['routine'])
     return redirect('/')
