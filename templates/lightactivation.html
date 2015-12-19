@@ -1,7 +1,7 @@
 {% extends "wrapper.html" %}
 
 {% block content_active %}
-    <form action="/setstate" method="get">
+    <form action="/setstate" method="post">
         <h2>Animations</h2>
         {% for animation in alist %}
             <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radio + {{ animation }}">
