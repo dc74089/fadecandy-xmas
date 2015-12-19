@@ -32,6 +32,8 @@ class LightController(threading.Thread):
         self.direction = True
         self.position = 0
         self.initialized = False
+        self.timetillon = datetime(0, 0, 0)
+        self.timetilloff = datetime(0, 0, 0)
 
         # Test if it can connect (optional)
         if self.fc.can_connect():
@@ -80,6 +82,9 @@ class LightController(threading.Thread):
 
             bedtime = dusk
             bedtime.replace(hour=BEDTIME_HOUR, minute=0, second=0)
+
+            self.timetillon = dusk - now
+            self.timetilloff = bedtime - now
 
             if dusk <= now <= bedtime and not self.initialized:
                 if self.state == 0:

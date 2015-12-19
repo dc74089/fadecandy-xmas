@@ -42,9 +42,10 @@ def suninfo():
     a = Astral()
     orlando = a['Orlando']
     sun = orlando.sun(date=datetime.now(), local=True)
-    return "Dawn: %s<br>Sunrise: %s<br>Noon: %s<br>Sunset: %s<br>Dusk: %s<br>Now: %s" % (
+    return "Dawn: %s<br>Sunrise: %s<br>Noon: %s<br>Sunset: %s<br>Dusk: %s<br>Now: %s<br><br>Time till on %s: <br>" \
+           "Time till off: %s" % (
     str(sun['dawn']), str(sun['sunrise']), str(sun['noon']), str(sun['sunset']), str(sun['dusk']),
-    str(sun['dusk'].tzinfo.localize(datetime.now())))
+    str(sun['dusk'].tzinfo.localize(datetime.now())), str(lc.timetillon), str(lc.timetilloff))
 
 
 @app.route('/setstate/:newstate')
