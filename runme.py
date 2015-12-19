@@ -23,17 +23,12 @@ statics[101] = "White"
 
 @app.route('/')
 def index():
-    return render_template("lightactivation.html", alist=animations, slist=statics)
+    return render_template("lightactivation.html", alist=animations, slist=statics, title="Canora Lights")
 
 
 @app.route('/test')
 def test():
     return "test"
-
-
-@app.route('/time')
-def test_time():
-    return "Datetime: %s <br> Hour: %f" % (str(datetime.now()), datetime.now().hour)
 
 
 @app.route('/suninfo')
@@ -42,10 +37,18 @@ def suninfo():
     a = Astral()
     orlando = a['Orlando']
     sun = orlando.sun(date=datetime.now(), local=True)
-    return "Dawn: %s<br>Sunrise: %s<br>Noon: %s<br>Sunset: %s<br>Dusk: %s<br>Now: %s<br><br>Time till on %s: <br>" \
-           "Time till off: %s" % (
-    str(sun['dawn']), str(sun['sunrise']), str(sun['noon']), str(sun['sunset']), str(sun['dusk']),
-    str(sun['dusk'].tzinfo.localize(datetime.now())), str(lc.timetillon), str(lc.timetilloff))
+
+    display = {}
+    display[0] = "Now: %s" % str(sun['dusk'].tzinfo.localize(datetime.now()))
+    display[1] = "Dawn: %s" % str(sun['dawn'])
+    display[2] = "Sunrise: %s" % str(sun['sunrise'])
+    display[3] = "Noon: %s" % str(sun['noon'])
+    display[4] = "Sunset: %s" % str(sun['sunset'])
+    display[5] = "Dusk: %s" % str(sun['dusk'])
+    display[6] = "Time till on: %s" % str(lc.timetillon)
+    display[7] = "Time till off: %s" % str(lc.timetilloff)
+
+    return render_template("prettystring.html", dispdict=display, title="Sun Debug")
 
 
 @app.route('/setstate', methods=['POST'])
