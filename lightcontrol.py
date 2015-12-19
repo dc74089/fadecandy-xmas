@@ -24,7 +24,7 @@ theTime = lambda: int(round(time.time() * 10))
 
 
 class LightController(threading.Thread):
-    def __init__(self, ip='192.168.0.123:7890'):
+    def __init__(self, ip='127.0.0.1:7890'):
         threading.Thread.__init__(self)
 
         self.fc = opc.Client(ip)
@@ -79,9 +79,7 @@ class LightController(threading.Thread):
             now = dusk.tzinfo.localize(now)
 
             bedtime = dusk
-            bedtime.hour = BEDTIME_HOUR
-            bedtime.minute = 0
-            bedtime.second = 0
+            bedtime.replace(hour=BEDTIME_HOUR, minute=0, second=0)
 
             if dusk <= now <= bedtime and not self.initialized:
                 if self.state == 0:

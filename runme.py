@@ -35,13 +35,16 @@ def test():
 def test_time():
     return "Datetime: %s <br> Hour: %f" % (str(datetime.now()), datetime.now().hour)
 
+
 @app.route('/suninfo')
 def suninfo():
     from astral import Astral
     a = Astral()
     orlando = a['Orlando']
     sun = orlando.sun(date=datetime.now(), local=True)
-    return "Dawn: %s<br>Sunrise: %s<br>Noon: %s<br>Sunset: %s<br>Dusk: %s<br>Now: %s" % (str(sun['dawn']), str(sun['sunrise']), str(sun['noon']), str(sun['sunset']), str(sun['dusk']), str(sun['dusk'].tzinfo.localize(datetime.now())))
+    return "Dawn: %s<br>Sunrise: %s<br>Noon: %s<br>Sunset: %s<br>Dusk: %s<br>Now: %s" % (
+    str(sun['dawn']), str(sun['sunrise']), str(sun['noon']), str(sun['sunset']), str(sun['dusk']),
+    str(sun['dusk'].tzinfo.localize(datetime.now())))
 
 
 @app.route('/setstate/:newstate')
