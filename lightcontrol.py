@@ -32,8 +32,8 @@ class LightController(threading.Thread):
         self.direction = True
         self.position = 0
         self.initialized = False
-        self.timetillon = datetime(0, 0, 0)
-        self.timetilloff = datetime(0, 0, 0)
+        self.timetillon = datetime.now()
+        self.timetilloff = datetime.now()
 
         # Test if it can connect (optional)
         if self.fc.can_connect():
