@@ -80,8 +80,7 @@ class LightController(threading.Thread):
 
             now = dusk.tzinfo.localize(now)
 
-            bedtime = dusk
-            bedtime.replace(hour=BEDTIME_HOUR, minute=0, second=0)
+            bedtime = dusk.replace(hour=BEDTIME_HOUR, minute=0, second=0)
 
             self.timetillon = dusk - now
             self.timetilloff = bedtime - now
