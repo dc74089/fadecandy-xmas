@@ -2,7 +2,6 @@ from flask import Flask, request, redirect
 from flask.templating import render_template
 from lightcontrol import LightController
 from datetime import datetime
-import hashlib
 
 app = Flask(__name__)
 
@@ -73,6 +72,7 @@ def set_state_from_args():
 def test_show():
     lc.init_show()
     lc.setstate(4)
+    return "Starting show..."
 
 
 def set_state_if_int(newstate):
