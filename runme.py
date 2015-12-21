@@ -2,6 +2,7 @@ from flask import Flask, request, redirect
 from flask.templating import render_template
 from lightcontrol import LightController
 from datetime import datetime
+import hashlib
 
 app = Flask(__name__)
 
@@ -28,7 +29,18 @@ def index():
 
 @app.route('/test')
 def test():
-    return "test"
+    return "Hello World!"
+
+
+@app.route('/admin', methods=['GET'])
+def admin_serve():
+    return render_template("admin.html", title="Admin")
+
+
+@app.route('/admin', methods=['POST'])
+def admin_do():
+    print("Got a post!")
+    return "Hey! How'd you get here?"
 
 
 @app.route('/suninfo')
@@ -57,6 +69,12 @@ def set_state_from_args():
     return redirect('/')
 
 
+@app.route('/testshow')
+def test_show():
+    lc.init_show()
+    lc.setstate(4)
+
+
 def set_state_if_int(newstate):
     try:
         state_to_set = int(newstate)
@@ -67,5 +85,5 @@ def set_state_if_int(newstate):
 
 
 if __name__ == '__main__':
-    app.debug = False
+    app.debug = True
     app.run(host="0.0.0.0", port=1150)

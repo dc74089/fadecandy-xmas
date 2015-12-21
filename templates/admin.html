@@ -1,0 +1,37 @@
+{% extends "wrapper.html" %}
+
+{% block content_active %}
+
+    <form action="/admin" method="post">
+        <h2>Admin</h2>
+        <!--Radios for actions, field for pass, submit to post-->
+        <p>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radio-pull">
+                <input class="mdl-radio__button" id="radio-pull" name="action" type="radio"
+                       value="pull">
+                <span class="mdl-radio__label">Pull</span>
+            </label>
+        </p>
+
+        <p>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radio-reboot">
+                <input class="mdl-radio__button" id="radio-reboot" name="action" type="radio"
+                       value="reboot">
+                <span class="mdl-radio__label">Reboot</span>
+            </label>
+        </p>
+
+        <p>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="password" id="pass">
+              <label class="mdl-textfield__label" for="pass">Passkey</label>
+            </div>
+        </p>
+
+        <p>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                onclick="submit">Go</button>
+        </p>
+    </form>
+
+{% endblock %}

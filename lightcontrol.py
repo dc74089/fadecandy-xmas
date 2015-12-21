@@ -35,6 +35,15 @@ class LightController(threading.Thread):
         self.timetillon = datetime.now()
         self.timetilloff = datetime.now()
 
+        self.colors = []
+        for i in range(int(ceil(GRG_LEN / 6))):
+            self.colors.append((255, 0, 0))
+            self.colors.append((255, 255, 0))
+            self.colors.append((0, 255, 0))
+            self.colors.append((0, 255, 255))
+            self.colors.append((0, 0, 255))
+            self.colors.append((255, 0, 255))
+
         # Test if it can connect (optional)
         if self.fc.can_connect():
             # Test if it can connect (optional)
@@ -47,7 +56,7 @@ class LightController(threading.Thread):
 
     def setstate(self, state):
         self.state = state
-        print 'state set to %f' % state
+        print 'State set to %f' % state
 
     def run(self):
         while True:
@@ -87,6 +96,7 @@ class LightController(threading.Thread):
 
             if dusk <= now <= bedtime and not self.initialized:
                 if self.state == 0:
+                    self.init_show()
                     self.state = START_PROGRAM
                 self.initialized = True
 
@@ -95,11 +105,54 @@ class LightController(threading.Thread):
                 self.initialized = False
                 time.sleep(HIBERNATE)
 
+    def init_show(self):
+        self.all_off()
+
+        i = pow(2, 100)
+        pixels = []
+        for i in range(GRG_LEN):
+            pixels.append((0, 0, 0))
+
+        while i > 1:
+            for p in range(GRG_LEN):
+                if randint(0, i) < 2:
+                    pixels[p] = (128, 140, 65)
+            self.fc.put_pixels(pixels)
+            i /= 2
+            time.sleep(0.05)
+
+        time.sleep(0.5)
+        pixels = []
+        for p in range(GRG_LEN):
+            pixels.append((255, 255, 175))
+        self.fc.put_pixels(pixels)
+
+        active = []
+        for i in range(GRG_LEN):
+            active.append(True)
+
+        i = pow(2, 100)
+        while i > 1:
+            pixels = []
+            for p in range(GRG_LEN):
+                if randint(0, i) < 2:
+                    active[p] = False
+
+                if randint(0, 10) <= 2 and active[p]:
+                    pixels[p] = self.colors[p]
+                else:
+                    pixels[p] = (0, 0, 0)
+
+            self.fc.put_pixels(pixels)
+
+        self.all_off()
+
     def all_off(self):
         pixels = []
         for i in range(GRG_LEN):
             pixels.append((0, 0, 0))
         self.fc.put_pixels(pixels)
+        time.sleep(1)
 
     def fade(self):
         pixels = []
