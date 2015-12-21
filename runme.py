@@ -70,8 +70,7 @@ def set_state_from_args():
 
 @app.route('/testshow')
 def test_show():
-    lc.init_show()
-    lc.setstate(4)
+    lc.test_show()
     return "Starting show..."
 
 

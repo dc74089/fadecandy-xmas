@@ -32,6 +32,7 @@ class LightController(threading.Thread):
         self.direction = True
         self.position = 0
         self.initialized = False
+        self.manual_show_test = False
         self.timetillon = datetime.now()
         self.timetilloff = datetime.now()
 
@@ -94,9 +95,15 @@ class LightController(threading.Thread):
             self.timetillon = dusk - now
             self.timetilloff = bedtime - now
 
+            if self.manual_show_test:
+                self.all_off()
+                time.sleep(1)
+                self.init_show()
+                self.manual_show_test = False
+
             if dusk <= now <= bedtime and not self.initialized:
                 if self.state == 0:
-                    self.init_show()
+                    #self.init_show()
                     self.state = START_PROGRAM
                 self.initialized = True
 
@@ -104,6 +111,9 @@ class LightController(threading.Thread):
                 self.state = 0
                 self.initialized = False
                 time.sleep(HIBERNATE)
+
+    def test_show(self):
+        self.manual_show_test = True
 
     def init_show(self):
         self.all_off()
