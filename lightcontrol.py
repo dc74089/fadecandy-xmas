@@ -143,7 +143,7 @@ class LightController(threading.Thread):
 
         i = pow(2, 100)
         while i > 1:
-            pixels = []
+            pixels = [(0, 0, 0)] * GRG_LEN
             for p in range(GRG_LEN):
                 if randint(0, i) < 2:
                     active[p] = False
