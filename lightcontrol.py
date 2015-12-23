@@ -127,11 +127,13 @@ class LightController(threading.Thread):
                     pixels[p] = (128, 140, 65)
             self.fc.put_pixels(pixels)
             i /= 2
-            time.sleep(0.05)
+            time.sleep(0.5)
 
         time.sleep(0.5)
         pixels = [(255, 255, 175)] * GRG_LEN
         self.fc.put_pixels(pixels)
+
+        time.sleep(1)
 
         active = [True] * GRG_LEN
 
@@ -149,6 +151,7 @@ class LightController(threading.Thread):
 
             self.fc.put_pixels(pixels)
             i /= 2
+            time.sleep(0.5)
 
         self.all_off()
 
