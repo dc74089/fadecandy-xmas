@@ -103,7 +103,7 @@ class LightController(threading.Thread):
 
             if sunset <= now <= bedtime and not self.initialized:
                 if self.state == 0:
-                    #self.init_show()
+                    # self.init_show()
                     self.state = START_PROGRAM
                 self.initialized = True
 
@@ -119,8 +119,8 @@ class LightController(threading.Thread):
         self.all_off()
 
         iscolored = [False] * GRG_LEN
+        pixels = [(0, 0, 0)] * GRG_LEN
         while any(element is False for element in iscolored):
-            pixels = [(0, 0, 0)] * GRG_LEN
             for p in range(GRG_LEN):
                 if randint(0, 100) < 10:
                     iscolored[p] = True
@@ -134,7 +134,6 @@ class LightController(threading.Thread):
             time.sleep(0.5)
 
         while any(element is True for element in iscolored):
-            pixels = [(0, 0, 0)] * GRG_LEN
             for p in range(GRG_LEN):
                 if randint(0, 100) < 10:
                     iscolored[p] = False
@@ -147,13 +146,15 @@ class LightController(threading.Thread):
             self.fc.put_pixels(pixels)
             time.sleep(0.5)
 
+        return #DEBUG
+
         time.sleep(0.5)
         pixels = [(255, 255, 175)] * GRG_LEN
         self.fc.put_pixels(pixels)
         time.sleep(1)
 
         i = 200
-        while i is not 0:
+        while i > 0:
             for p in range(GRG_LEN):
                 if randint(0, 100000) < i:
                     pixels[p] = (255, 255, 175)
