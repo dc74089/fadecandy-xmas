@@ -118,40 +118,50 @@ class LightController(threading.Thread):
     def init_show(self):
         self.all_off()
 
-        i = pow(2, 100)
-        pixels = [(0, 0, 0)] * GRG_LEN
-
-        while i > 1:
-            for p in range(GRG_LEN):
-                if randint(0, i) < 2:
-                    pixels[p] = (128, 140, 65)
-            self.fc.put_pixels(pixels)
-            i /= 2
-            time.sleep(0.5)
-
-        time.sleep(0.5)
-        pixels = [(255, 255, 175)] * GRG_LEN
-        self.fc.put_pixels(pixels)
-
-        time.sleep(1)
-
-        active = [True] * GRG_LEN
-
-        i = pow(2, 100)
-        while i > 1:
+        iscolored = [False] * GRG_LEN
+        while any(element is False for element in iscolored):
             pixels = [(0, 0, 0)] * GRG_LEN
             for p in range(GRG_LEN):
-                if randint(0, i) < 2:
-                    active[p] = False
+                if randint(0, 100) < 10:
+                    iscolored[p] = True
 
-                if randint(0, 10) <= 2 and active[p]:
+                if iscolored[p]:
                     pixels[p] = self.colors[p]
                 else:
                     pixels[p] = (0, 0, 0)
 
             self.fc.put_pixels(pixels)
-            i /= 2
             time.sleep(0.5)
+
+        while any(element is True for element in iscolored):
+            pixels = [(0, 0, 0)] * GRG_LEN
+            for p in range(GRG_LEN):
+                if randint(0, 100) < 10:
+                    iscolored[p] = False
+
+                if not iscolored[p]:
+                    pixels[p] = self.colors[p]
+                else:
+                    pixels[p] = (128, 140, 65)
+
+            self.fc.put_pixels(pixels)
+            time.sleep(0.5)
+
+        time.sleep(0.5)
+        pixels = [(255, 255, 175)] * GRG_LEN
+        self.fc.put_pixels(pixels)
+        time.sleep(1)
+
+        i = 200
+        while i is not 0:
+            for p in range(GRG_LEN):
+                if randint(0, 100000) < i:
+                    pixels[p] = (255, 255, 175)
+                else:
+                    pixels[p] = (0, 0, 0)
+            self.fc.put_pixels(pixels)
+            i -= 1
+            time.sleep(0.04)
 
         self.all_off()
 

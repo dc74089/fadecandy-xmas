@@ -43,8 +43,8 @@
       <file leaf-file-name="lightcontrol.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lightcontrol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22259696">
-              <caret line="135" column="20" selection-start-line="135" selection-start-column="20" selection-end-line="135" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.6526138">
+              <caret line="162" column="18" selection-start-line="162" selection-start-column="18" selection-end-line="162" selection-end-column="18" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -643,7 +643,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450881593237</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Make show look better and hopefully end itself once it's done">
+      <created>1450882458403</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1450882458403</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -684,7 +690,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed to port 1150" />
     <MESSAGE value="New test endpoint" />
     <MESSAGE value="Make available on public network" />
     <MESSAGE value="More debug stuff." />
@@ -709,7 +714,8 @@
     <MESSAGE value="Temporarily disable init show" />
     <MESSAGE value="Show should work now!" />
     <MESSAGE value="Optimizations and sunset instead of dusk." />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimizations and sunset instead of dusk." />
+    <MESSAGE value="Make show look better and hopefully end itself once it's done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make show look better and hopefully end itself once it's done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1087,8 +1093,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lightcontrol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22259696">
-          <caret line="135" column="20" selection-start-line="135" selection-start-column="20" selection-end-line="135" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.6526138">
+          <caret line="162" column="18" selection-start-line="162" selection-start-column="18" selection-end-line="162" selection-end-column="18" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
