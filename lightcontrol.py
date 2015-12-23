@@ -86,13 +86,13 @@ class LightController(threading.Thread):
             now = datetime.now()
 
             sun = orlando.sun(date=now, local=True)
-            dusk = sun['dusk']
+            sunset = sun['sunset']
 
-            now = dusk.tzinfo.localize(now)
+            now = sunset.tzinfo.localize(now)
 
-            bedtime = dusk.replace(hour=BEDTIME_HOUR, minute=0, second=0)
+            bedtime = sunset.replace(hour=BEDTIME_HOUR, minute=0, second=0)
 
-            self.timetillon = dusk - now
+            self.timetillon = sunset - now
             self.timetilloff = bedtime - now
 
             if self.manual_show_test:
@@ -101,7 +101,7 @@ class LightController(threading.Thread):
                 self.init_show()
                 self.manual_show_test = False
 
-            if dusk <= now <= bedtime and not self.initialized:
+            if sunset <= now <= bedtime and not self.initialized:
                 if self.state == 0:
                     #self.init_show()
                     self.state = START_PROGRAM
@@ -119,9 +119,7 @@ class LightController(threading.Thread):
         self.all_off()
 
         i = pow(2, 100)
-        pixels = []
-        for i in range(GRG_LEN):
-            pixels.append((0, 0, 0))
+        pixels = [(0, 0, 0)] * GRG_LEN
 
         while i > 1:
             for p in range(GRG_LEN):
@@ -132,14 +130,10 @@ class LightController(threading.Thread):
             time.sleep(0.05)
 
         time.sleep(0.5)
-        pixels = []
-        for p in range(GRG_LEN):
-            pixels.append((255, 255, 175))
+        pixels = [(255, 255, 175)] * GRG_LEN
         self.fc.put_pixels(pixels)
 
-        active = []
-        for i in range(GRG_LEN):
-            active.append(True)
+        active = [True] * GRG_LEN
 
         i = pow(2, 100)
         while i > 1:
@@ -154,6 +148,7 @@ class LightController(threading.Thread):
                     pixels[p] = (0, 0, 0)
 
             self.fc.put_pixels(pixels)
+            i /= 2
 
         self.all_off()
 
