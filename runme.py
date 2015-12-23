@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request, redirect
 from flask.templating import render_template
 from lightcontrol import LightController
@@ -72,6 +74,20 @@ def set_state_from_args():
 def test_show():
     lc.test_show()
     return "Starting show..."
+
+
+@app.route('/shutdown')
+def shutdown():
+    shutdown_server()
+    os.system('kill %d' % os.getpid())
+    return "Shutting down..."
+
+
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
 
 
 def set_state_if_int(newstate):

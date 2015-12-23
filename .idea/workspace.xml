@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a64b4da5-f753-4bc0-80e9-7583e74b77c4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lightcontrol.py" afterPath="$PROJECT_DIR$/lightcontrol.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/runme.py" afterPath="$PROJECT_DIR$/runme.py" />
     </list>
     <ignored path="pycharm-xmas.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,22 +28,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="runme.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="runme.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/runme.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.28330523">
+              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding>
-                <element signature="e#0#42#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lightcontrol.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lightcontrol.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lightcontrol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6526138">
+            <state vertical-scroll-proportion="0.0">
               <caret line="162" column="18" selection-start-line="162" selection-start-column="18" selection-end-line="162" selection-end-column="18" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
@@ -79,8 +79,8 @@
         <option value="$PROJECT_DIR$/templates/prettystring.html" />
         <option value="$PROJECT_DIR$/templates/admin.html" />
         <option value="$PROJECT_DIR$/templates/wrapper.html" />
-        <option value="$PROJECT_DIR$/runme.py" />
         <option value="$PROJECT_DIR$/lightcontrol.py" />
+        <option value="$PROJECT_DIR$/runme.py" />
       </list>
     </option>
   </component>
@@ -649,7 +649,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450882458403</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Show tuning">
+      <created>1450884236681</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1450884236681</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -690,7 +696,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="New test endpoint" />
     <MESSAGE value="Make available on public network" />
     <MESSAGE value="More debug stuff." />
     <MESSAGE value="Fixes?" />
@@ -715,7 +720,8 @@
     <MESSAGE value="Show should work now!" />
     <MESSAGE value="Optimizations and sunset instead of dusk." />
     <MESSAGE value="Make show look better and hopefully end itself once it's done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make show look better and hopefully end itself once it's done" />
+    <MESSAGE value="Show tuning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Show tuning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -727,7 +733,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -737,7 +743,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="81" column="20" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="20" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -771,7 +777,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="81" column="20" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="20" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -812,7 +818,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -832,7 +838,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -866,7 +872,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -900,7 +906,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -941,7 +947,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -982,7 +988,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1081,22 +1087,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/runme.py">
+    <entry file="file://$PROJECT_DIR$/lightcontrol.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
+          <caret line="162" column="18" selection-start-line="162" selection-start-column="18" selection-end-line="162" selection-end-column="18" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lightcontrol.py">
+    <entry file="file://$PROJECT_DIR$/runme.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6526138">
-          <caret line="162" column="18" selection-start-line="162" selection-start-column="18" selection-end-line="162" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.28330523">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding>
-            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
