@@ -146,8 +146,6 @@ class LightController(threading.Thread):
             self.fc.put_pixels(pixels)
             time.sleep(0.5)
 
-        return #DEBUG
-
         time.sleep(0.5)
         pixels = [(255, 255, 175)] * GRG_LEN
         self.fc.put_pixels(pixels)
