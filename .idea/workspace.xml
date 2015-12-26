@@ -43,8 +43,8 @@
       <file leaf-file-name="lightcontrol.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lightcontrol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34920636">
-              <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.57369614">
+              <caret line="173" column="28" selection-start-line="173" selection-start-column="28" selection-end-line="173" selection-end-column="28" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -440,12 +440,6 @@
       <option name="number" value="Default" />
       <updated>1449707063850</updated>
     </task>
-    <task id="LOCAL-00007" summary="More debug stuff.">
-      <created>1449792135730</created>
-      <option name="number" value="00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1449792135730</updated>
-    </task>
     <task id="LOCAL-00008" summary="More debug stuff.">
       <created>1449792143929</created>
       <option name="number" value="00008" />
@@ -734,7 +728,13 @@
       <option name="project" value="LOCAL" />
       <updated>1451096685542</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="More tuning">
+      <created>1451097602790</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1451097602790</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -775,7 +775,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix another datetime issue." />
     <MESSAGE value="Switch to POST" />
     <MESSAGE value="POST fixes" />
     <MESSAGE value="Debug pages are now pretty." />
@@ -800,7 +799,8 @@
     <MESSAGE value="Revert changes. Change gitignore to ignore compiled files." />
     <MESSAGE value="Testing tuning that will hopefully take effect this time." />
     <MESSAGE value="Tuning that will hopefully take effect this time." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tuning that will hopefully take effect this time." />
+    <MESSAGE value="More tuning" />
+    <option name="LAST_COMMIT_MESSAGE" value="More tuning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1200,8 +1200,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lightcontrol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34920636">
-          <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.57369614">
+          <caret line="173" column="28" selection-start-line="173" selection-start-column="28" selection-end-line="173" selection-end-column="28" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

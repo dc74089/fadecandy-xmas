@@ -117,8 +117,8 @@ class LightController(threading.Thread):
         self.manual_show_test = True
 
     def init_show(self):
-        RAND_DENSITY = 20
-        MAX_LOOPS = 15
+        RAND_DENSITY = 15
+        MAX_LOOPS = 10
         SLEEP = 0.75
 
         self.all_off()
@@ -171,7 +171,7 @@ class LightController(threading.Thread):
         time.sleep(SLEEP * 2)
         pixels = [(255, 255, 175)] * GRG_LEN
         self.fc.put_pixels(pixels)
-        time.sleep(SLEEP * 2)
+        time.sleep(SLEEP * 3)
 
         i = 100
         while i > 0:
