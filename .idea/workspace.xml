@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a64b4da5-f753-4bc0-80e9-7583e74b77c4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="a64b4da5-f753-4bc0-80e9-7583e74b77c4" name="Default" comment="Testing tuning that will hopefully take effect this time.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lightcontrol.py" afterPath="$PROJECT_DIR$/lightcontrol.py" />
     </list>
@@ -44,8 +43,8 @@
       <file leaf-file-name="lightcontrol.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lightcontrol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19954649">
-              <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.37414965">
+              <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -441,12 +440,6 @@
       <option name="number" value="Default" />
       <updated>1449707063850</updated>
     </task>
-    <task id="LOCAL-00004" summary="Make available on public network">
-      <created>1449791384186</created>
-      <option name="number" value="00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1449791384186</updated>
-    </task>
     <task id="LOCAL-00005" summary="More debug stuff.">
       <created>1449791944434</created>
       <option name="number" value="00005" />
@@ -735,7 +728,13 @@
       <option name="project" value="LOCAL" />
       <updated>1451095082615</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Revert changes. Change gitignore to ignore compiled files.">
+      <created>1451095900645</created>
+      <option name="number" value="00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1451095900645</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -776,7 +775,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update IP" />
     <MESSAGE value="Fix Datetime issue" />
     <MESSAGE value="More time debug code" />
     <MESSAGE value="Fix another datetime issue." />
@@ -801,7 +799,8 @@
     <MESSAGE value="Full brightness. Because reasons." />
     <MESSAGE value="No longer full brightness. Show tuning." />
     <MESSAGE value="Testing auto-pulling by screwing up the show" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing auto-pulling by screwing up the show" />
+    <MESSAGE value="Revert changes. Change gitignore to ignore compiled files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert changes. Change gitignore to ignore compiled files." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1201,8 +1200,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lightcontrol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19954649">
-          <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.37414965">
+          <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
