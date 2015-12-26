@@ -117,8 +117,10 @@ class LightController(threading.Thread):
         self.manual_show_test = True
 
     def init_show(self):
-        RAND_DENSITY = 10
+        RAND_DENSITY = 15
         MAX_LOOPS = 10
+        SLEEP = 0.75
+
         self.all_off()
 
         is_colored = [False] * GRG_LEN
@@ -140,13 +142,14 @@ class LightController(threading.Thread):
                     pixels[p] = self.colors[p]
 
             self.fc.put_pixels(pixels)
-            time.sleep(0.5)
+            time.sleep(SLEEP)
 
             if i >= MAX_LOOPS:
                 break
             i += 1
 
         i = 0
+        time.sleep(SLEEP)
 
         while any(element is True for element in is_colored):
             for p in range(GRG_LEN):
@@ -162,16 +165,16 @@ class LightController(threading.Thread):
                     pixels[p] = (128, 140, 65)
 
             self.fc.put_pixels(pixels)
-            time.sleep(0.5)
+            time.sleep(SLEEP)
 
             if i >= MAX_LOOPS:
                 break
             i += 1
 
-        time.sleep(0.5)
+        time.sleep(SLEEP * 3)
         pixels = [(255, 255, 175)] * GRG_LEN
         self.fc.put_pixels(pixels)
-        time.sleep(2)
+        time.sleep(SLEEP * 2)
 
         i = 100
         while i > 0:

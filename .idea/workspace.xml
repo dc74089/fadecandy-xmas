@@ -43,8 +43,8 @@
       <file leaf-file-name="lightcontrol.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lightcontrol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4988662">
-              <caret line="178" column="38" selection-start-line="178" selection-start-column="38" selection-end-line="178" selection-end-column="38" />
+            <state vertical-scroll-proportion="1.6213152">
+              <caret line="176" column="27" selection-start-line="176" selection-start-column="27" selection-end-line="176" selection-end-column="27" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -706,7 +706,13 @@
       <option name="project" value="LOCAL" />
       <updated>1451093162814</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="More show tuning">
+      <created>1451093513818</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1451093513818</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -747,7 +753,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Apparently they should turn on at 5." />
     <MESSAGE value="We now take sunsets into account." />
     <MESSAGE value="We now take sunsets into account. And we require things." />
     <MESSAGE value="Favicon!" />
@@ -772,7 +777,8 @@
     <MESSAGE value="Enable Cylon" />
     <MESSAGE value="Fix show" />
     <MESSAGE value="Finished show" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished show" />
+    <MESSAGE value="More show tuning" />
+    <option name="LAST_COMMIT_MESSAGE" value="More show tuning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1172,8 +1178,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lightcontrol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4988662">
-          <caret line="178" column="38" selection-start-line="178" selection-start-column="38" selection-end-line="178" selection-end-column="38" />
+        <state vertical-scroll-proportion="1.6213152">
+          <caret line="176" column="27" selection-start-line="176" selection-start-column="27" selection-end-line="176" selection-end-column="27" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
