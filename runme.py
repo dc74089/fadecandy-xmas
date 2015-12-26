@@ -23,6 +23,9 @@ statics[100] = "Red/Green"
 statics[101] = "White"
 
 
+print "Runme: I am %i" % os.getpid()
+
+
 @app.route('/')
 def index():
     return render_template("lightactivation.html", alist=animations, slist=statics, title="Canora Lights")

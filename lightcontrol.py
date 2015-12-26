@@ -1,3 +1,4 @@
+import os
 import threading
 
 from datetime import datetime
@@ -28,6 +29,8 @@ class LightController(threading.Thread):
         threading.Thread.__init__(self)
         threading.Thread.daemon = True
 
+        print "LightControl: I am %i" % os.getpid()
+
         self.fc = opc.Client(ip)
         self.state = 0
         self.direction = True
@@ -36,6 +39,7 @@ class LightController(threading.Thread):
         self.manual_show_test = False
         self.timetillon = datetime.now()
         self.timetilloff = datetime.now()
+        self.debugbool = False
 
         self.colors = []
         for i in range(int(ceil(GRG_LEN / 6))):
@@ -97,8 +101,6 @@ class LightController(threading.Thread):
             self.timetilloff = bedtime - now
 
             if self.manual_show_test:
-                self.all_off()
-                time.sleep(1)
                 self.init_show()
                 self.manual_show_test = False
 
@@ -166,6 +168,8 @@ class LightController(threading.Thread):
         self.all_off()
 
     def all_off(self):
+        print "PID %i is ALL_OFF" % os.getpid()
+        self.debugbool = False
         pixels = []
         for i in range(GRG_LEN):
             pixels.append((0, 0, 0))
@@ -204,6 +208,9 @@ class LightController(threading.Thread):
         self.fc.put_pixels(pixels)
 
     def twinkle(self):
+        if not self.debugbool:
+            print "PID %i is TWINKLING" % os.getpid()
+            self.debugbool = True
         pixels = []
         for i in range(GRG_LEN):
             if randint(0, 10000) < 20:
