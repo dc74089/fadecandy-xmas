@@ -117,58 +117,66 @@ class LightController(threading.Thread):
         self.manual_show_test = True
 
     def init_show(self):
+        RAND_DENSITY = 10
+        MAX_LOOPS = 10
         self.all_off()
 
-        iscolored = [False] * GRG_LEN
+        is_colored = [False] * GRG_LEN
         pixels = [(0, 0, 0)] * GRG_LEN
 
         i = 0
 
-        while any(element is False for element in iscolored):
+        while any(element is False for element in is_colored):
             for p in range(GRG_LEN):
-                if randint(0, 100) < 10:
-                    iscolored[p] = True
+                if randint(0, 100) < RAND_DENSITY:
+                    is_colored[p] = True
 
-                if iscolored[p] or i is 6:
+                if is_colored[p]:
                     pixels[p] = self.colors[p]
                 else:
                     pixels[p] = (0, 0, 0)
 
+                if i is MAX_LOOPS:
+                    pixels[p] = self.colors[p]
+
             self.fc.put_pixels(pixels)
             time.sleep(0.5)
 
-            if i >= 6:
+            if i >= MAX_LOOPS:
                 break
             i += 1
 
         i = 0
 
-        while any(element is True for element in iscolored):
+        while any(element is True for element in is_colored):
             for p in range(GRG_LEN):
-                if randint(0, 100) < 10:
-                    iscolored[p] = False
+                if randint(0, 100) < RAND_DENSITY:
+                    is_colored[p] = False
 
-                if not iscolored[p] or i is 6:
+                if not is_colored[p]:
                     pixels[p] = (128, 140, 65)
                 else:
                     pixels[p] = self.colors[p]
 
+                if i is MAX_LOOPS:
+                    pixels[p] = (128, 140, 65)
+
             self.fc.put_pixels(pixels)
             time.sleep(0.5)
 
-            if i >= 6:
+            if i >= MAX_LOOPS:
                 break
             i += 1
 
         time.sleep(0.5)
         pixels = [(255, 255, 175)] * GRG_LEN
         self.fc.put_pixels(pixels)
-        time.sleep(1)
+        time.sleep(2)
 
-        i = 200
+        i = 100
         while i > 0:
             for p in range(GRG_LEN):
-                if randint(0, 200) < i:
+                if randint(0, 100) < i:
                     pixels[p] = (255, 255, 175)
                 else:
                     pixels[p] = (0, 0, 0)
