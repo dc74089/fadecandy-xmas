@@ -27,7 +27,6 @@ theTime = lambda: int(round(time.time() * 10))
 class LightController(threading.Thread):
     def __init__(self, ip='127.0.0.1:7890'):
         threading.Thread.__init__(self)
-        threading.Thread.daemon = True
 
         print "LightControl: I am %i" % os.getpid()
 

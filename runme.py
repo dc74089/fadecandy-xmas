@@ -8,6 +8,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 lc = LightController()
+lc.daemon = True
 lc.start()
 
 animations = {}
