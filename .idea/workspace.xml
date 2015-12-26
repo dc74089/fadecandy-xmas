@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a64b4da5-f753-4bc0-80e9-7583e74b77c4" name="Default" comment="Testing tuning that will hopefully take effect this time.">
+    <list default="true" id="a64b4da5-f753-4bc0-80e9-7583e74b77c4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lightcontrol.py" afterPath="$PROJECT_DIR$/lightcontrol.py" />
     </list>
@@ -43,8 +43,8 @@
       <file leaf-file-name="lightcontrol.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lightcontrol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37414965">
-              <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.19954649">
+              <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -440,12 +440,6 @@
       <option name="number" value="Default" />
       <updated>1449707063850</updated>
     </task>
-    <task id="LOCAL-00005" summary="More debug stuff.">
-      <created>1449791944434</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1449791944434</updated>
-    </task>
     <task id="LOCAL-00006" summary="More debug stuff.">
       <created>1449792041449</created>
       <option name="number" value="00006" />
@@ -734,7 +728,13 @@
       <option name="project" value="LOCAL" />
       <updated>1451095900645</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Testing tuning that will hopefully take effect this time.">
+      <created>1451096459249</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1451096459249</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -775,7 +775,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix Datetime issue" />
     <MESSAGE value="More time debug code" />
     <MESSAGE value="Fix another datetime issue." />
     <MESSAGE value="Switch to POST" />
@@ -800,7 +799,8 @@
     <MESSAGE value="No longer full brightness. Show tuning." />
     <MESSAGE value="Testing auto-pulling by screwing up the show" />
     <MESSAGE value="Revert changes. Change gitignore to ignore compiled files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Revert changes. Change gitignore to ignore compiled files." />
+    <MESSAGE value="Testing tuning that will hopefully take effect this time." />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing tuning that will hopefully take effect this time." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1200,8 +1200,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lightcontrol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37414965">
-          <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.19954649">
+          <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

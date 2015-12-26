@@ -117,7 +117,7 @@ class LightController(threading.Thread):
         self.manual_show_test = True
 
     def init_show(self):
-        RAND_DENSITY = 100
+        RAND_DENSITY = 30
         MAX_LOOPS = 15
         SLEEP = 0.75
 
