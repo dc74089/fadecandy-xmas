@@ -28,8 +28,6 @@ class LightController(threading.Thread):
     def __init__(self, ip='127.0.0.1:7890'):
         threading.Thread.__init__(self)
 
-        print "LightControl: I am %i" % os.getpid()
-
         self.fc = opc.Client(ip)
         self.state = 0
         self.direction = True
@@ -102,6 +100,7 @@ class LightController(threading.Thread):
             if self.manual_show_test:
                 self.init_show()
                 self.manual_show_test = False
+                self.state = 4
 
             if sunset <= now <= bedtime and not self.initialized:
                 if self.state == 0:
@@ -123,14 +122,14 @@ class LightController(threading.Thread):
         iscolored = [False] * GRG_LEN
         pixels = [(0, 0, 0)] * GRG_LEN
 
-        counter = 0
+        i = 0
 
         while any(element is False for element in iscolored):
             for p in range(GRG_LEN):
                 if randint(0, 100) < 10:
                     iscolored[p] = True
 
-                if iscolored[p] or counter is 6:
+                if iscolored[p] or i is 6:
                     pixels[p] = self.colors[p]
                 else:
                     pixels[p] = (0, 0, 0)
@@ -138,18 +137,18 @@ class LightController(threading.Thread):
             self.fc.put_pixels(pixels)
             time.sleep(0.5)
 
-            if counter >= 6:
+            if i >= 6:
                 break
-            counter += 1
+            i += 1
 
-        counter = 0
+        i = 0
 
         while any(element is True for element in iscolored):
             for p in range(GRG_LEN):
                 if randint(0, 100) < 10:
                     iscolored[p] = False
 
-                if not iscolored[p] or counter is 6:
+                if not iscolored[p] or i is 6:
                     pixels[p] = (128, 140, 65)
                 else:
                     pixels[p] = self.colors[p]
@@ -157,9 +156,9 @@ class LightController(threading.Thread):
             self.fc.put_pixels(pixels)
             time.sleep(0.5)
 
-            if counter >= 6:
+            if i >= 6:
                 break
-            counter += 1
+            i += 1
 
         time.sleep(0.5)
         pixels = [(255, 255, 175)] * GRG_LEN
@@ -180,7 +179,6 @@ class LightController(threading.Thread):
         self.all_off()
 
     def all_off(self):
-        print "PID %i is ALL_OFF" % os.getpid()
         self.debugbool = False
         pixels = []
         for i in range(GRG_LEN):
@@ -221,7 +219,6 @@ class LightController(threading.Thread):
 
     def twinkle(self):
         if not self.debugbool:
-            print "PID %i is TWINKLING" % os.getpid()
             self.debugbool = True
         pixels = []
         for i in range(GRG_LEN):

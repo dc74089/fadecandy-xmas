@@ -19,7 +19,7 @@ animations[1] = "Red/Green Fade"
 animations[2] = "Red/Green Wipe"
 animations[3] = "White Twinkle"
 animations[4] = "Christmas Twinkle"
-animations[5] = "Cylon"
+#animations[5] = "Cylon" #UGLY
 
 statics[100] = "Red/Green"
 statics[101] = "White"
