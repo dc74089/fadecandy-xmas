@@ -2,14 +2,14 @@ import os
 
 from flask import Flask, request, redirect
 from flask.templating import render_template
-from lightcontrol import LightController
+from garage import GarageController
 from datetime import datetime
 
 app = Flask(__name__)
 
-lc = LightController()
-lc.daemon = True
-lc.start()
+gc = GarageController()
+gc.daemon = True
+gc.start()
 
 animations = {}
 statics = {}
@@ -63,8 +63,8 @@ def suninfo():
     display[3] = "Noon: %s" % str(sun['noon'])
     display[4] = "Sunset: %s" % str(sun['sunset'])
     display[5] = "Dusk: %s" % str(sun['dusk'])
-    display[6] = "Time till on: %s" % str(lc.timetillon)
-    display[7] = "Time till off: %s" % str(lc.timetilloff)
+    display[6] = "Time till on: %s" % str(gc.timetillon)
+    display[7] = "Time till off: %s" % str(gc.timetilloff)
 
     return render_template("prettystring.html", dispdict=display, title="Sun Debug")
 
@@ -77,7 +77,7 @@ def set_state_from_args():
 
 @app.route('/testshow')
 def test_show():
-    lc.test_show()
+    gc.test_show()
     return "Starting show..."
 
 
@@ -98,7 +98,7 @@ def shutdown_server():
 def set_state_if_int(newstate):
     try:
         state_to_set = int(newstate)
-        lc.setstate(state_to_set)
+        gc.setstate(state_to_set)
         print "New state: %i" % state_to_set
     except ValueError:
         print "Not an int"

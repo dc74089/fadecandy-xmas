@@ -24,7 +24,7 @@ j = lambda: int(round(time.time() * 10)) % PERIOD
 theTime = lambda: int(round(time.time() * 10))
 
 
-class LightController(threading.Thread):
+class GarageController(threading.Thread):
     def __init__(self, ip='127.0.0.1:7890'):
         threading.Thread.__init__(self)
 
@@ -36,7 +36,6 @@ class LightController(threading.Thread):
         self.manual_show_test = False
         self.timetillon = datetime.now()
         self.timetilloff = datetime.now()
-        self.debugbool = False
 
         self.colors = []
         for i in range(int(ceil(GRG_LEN / 6))):
@@ -104,7 +103,7 @@ class LightController(threading.Thread):
 
             if sunset <= now <= bedtime and not self.initialized:
                 if self.state == 0:
-                    # self.init_show()
+                    self.init_show()
                     self.state = START_PROGRAM
                 self.initialized = True
 
@@ -187,7 +186,6 @@ class LightController(threading.Thread):
         self.all_off()
 
     def all_off(self):
-        self.debugbool = False
         pixels = []
         for i in range(GRG_LEN):
             pixels.append((0, 0, 0))
@@ -226,8 +224,6 @@ class LightController(threading.Thread):
         self.fc.put_pixels(pixels)
 
     def twinkle(self):
-        if not self.debugbool:
-            self.debugbool = True
         pixels = []
         for i in range(GRG_LEN):
             if randint(0, 10000) < 20:
