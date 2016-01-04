@@ -101,7 +101,7 @@ class GarageController(threading.Thread):
                 self.manual_show_test = False
                 self.state = 4
 
-            if sunset <= now <= bedtime and not self.initialized:
+            if AUTO_ON_ENABLED and sunset <= now <= bedtime and not self.initialized:
                 if self.state == 0:
                     self.init_show()
                     self.state = START_PROGRAM
