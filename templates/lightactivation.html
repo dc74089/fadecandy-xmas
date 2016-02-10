@@ -1,6 +1,9 @@
 {% extends "wrapper.html" %}
 
 {% block content_active %}
+    {% if special %}
+    <h4 style="text-align:center;">Today is a special day!</h4>
+    {% endif %}
     <form action="/setstate" method="post">
         <h2>Animations</h2>
         {% for animation in alist %}

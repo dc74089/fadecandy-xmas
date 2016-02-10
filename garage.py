@@ -1,60 +1,59 @@
-import os
 import threading
-
+import time
 from datetime import datetime
+from math import *
+from random import randint
 
 import opc
-from random import randint
-from math import *
-import time
-from astral import Astral
 
 GRG_LEN = 150
 PERIOD = 1024
 SLEEP = 0.01
 HIBERNATE = 60
 
-AUTO_ON_ENABLED = False
-START_PROGRAM = 4
-BEDTIME_HOUR = 23
-astral = Astral()
-orlando = astral["Orlando"]
+AUTO_ON_ENABLED_DAILY = False
+DAILY_START_PROGRAM = 4
+
+AUTO_ON_ENABLED_SPECIAL = True
+
+START_TIME = lambda: datetime.now().replace(hour=17, minute=30, second=0)
+BEDTIME = lambda: datetime.now().replace(hour=23, minute=30, second=0)
+now = lambda: datetime.now()
 
 j = lambda: int(round(time.time() * 10)) % PERIOD
 theTime = lambda: int(round(time.time() * 10))
 
 
 class GarageController(threading.Thread):
-    def __init__(self, ip='127.0.0.1:7890'):
+    def __init__(self, ip='127.0.0.1:7890', debug=False):
         threading.Thread.__init__(self)
 
         self.fc = opc.Client(ip)
+        self.debug = debug
         self.state = 0
         self.direction = True
         self.position = 0
         self.initialized = False
         self.manual_show_test = False
-        self.timetillon = datetime.now()
-        self.timetilloff = datetime.now()
+        self.timetillon = datetime.now().time()
+        self.timetilloff = datetime.now().time()
+        self.specialdays = {}
+        self.is_special_day = False
+        self.special_day_colors = None
+        self.last_initialized_date = datetime.min.date()
+        self.initspecialdays()
+        self.check_special_day()
 
-        self.colors = []
-        for i in range(int(ceil(GRG_LEN / 6))):
-            self.colors.append((255, 0, 0))
-            self.colors.append((255, 255, 0))
-            self.colors.append((0, 255, 0))
-            self.colors.append((0, 255, 255))
-            self.colors.append((0, 0, 255))
-            self.colors.append((255, 0, 255))
-
-        # Test if it can connect (optional)
         if self.fc.can_connect():
-            # Test if it can connect (optional)
             print('Connected')
         else:
-            # We could exit here, but instead let's just print a warning
-            # and then keep trying to send pixels in case the server
-            # appears later
             print('WARNING: could not connect to fadecandy')
+
+    def initspecialdays(self):
+        self.specialdays[(2, 14)] = ((255, 116, 140), (255, 0, 0), (255, 255, 175)) #Valentines Day
+        self.specialdays[(4, 2)] = ((0, 255, 255), (255, 255, 175)) #Light it up blue
+        self.specialdays[(3, 17)] = ((0, 255, 0), (255, 255, 175)) #St. Patrick's
+        self.specialdays[(2, 10)] = ((0, 255, 255), (0, 255, 255)) #DEBUG
 
     def setstate(self, state):
         self.state = state
@@ -78,42 +77,59 @@ class GarageController(threading.Thread):
                 self.red_green_static()
             elif self.state == 101:
                 self.white_static()
+            elif self.state == 999:
+                self.special_day_static()
             # Default to off
             else:
                 self.all_off()
 
             time.sleep(SLEEP)
 
-            now = datetime.now()
-
-            sun = orlando.sun(date=now, local=True)
-            sunset = sun['sunset']
-
-            now = sunset.tzinfo.localize(now)
-
-            bedtime = sunset.replace(hour=BEDTIME_HOUR, minute=0, second=0)
-
-            self.timetillon = sunset - now
-            self.timetilloff = bedtime - now
-
-            if self.manual_show_test:
-                self.init_show()
-                self.manual_show_test = False
-                self.state = 4
-
-            if AUTO_ON_ENABLED and sunset <= now <= bedtime and not self.initialized:
-                if self.state == 0:
-                    self.init_show()
-                    self.state = START_PROGRAM
+            self.timetillon = START_TIME() - now()
+            self.timetilloff = BEDTIME() - now()
+            
+            if self.last_initialized_date < now().date(): #Check if today is a special day, once per day
+                self.check_special_day()
+                self.last_initialized_date = now().date()
+                
+            if self.is_special_day and START_TIME() <= now() <= BEDTIME() and AUTO_ON_ENABLED_SPECIAL \
+                    and not self.initialized:
+                self.state = 999
                 self.initialized = True
 
-            if now >= bedtime:
+            if self.manual_show_test: #Test show manually, if needed
+                self.init_show()
+                self.manual_show_test = False
+                self.state = 0
+
+            if AUTO_ON_ENABLED_DAILY and START_TIME() <= now() <= BEDTIME() and not self.initialized\
+                    and not self.is_special_day: #Daily Init
+                if self.state == 0:
+                    self.init_show()
+                    self.state = DAILY_START_PROGRAM
+                self.initialized = True
+
+            if now() >= BEDTIME(): #Daily shutoff and un-init, every day
                 self.state = 0
                 self.initialized = False
+
+            if self.state == 0 and not self.debug:
                 time.sleep(HIBERNATE)
 
     def test_show(self):
         self.manual_show_test = True
+
+    def check_special_day(self):
+        if any(now().month == tup[0] and now().day == tup[1] for tup in self.specialdays.keys()):
+            self.is_special_day = True
+            self.special_day_colors = self.specialdays.get((now().month, now().day), (0, 0, 0))
+        else:
+            self.is_special_day = False
+            self.special_day_colors = None
+
+        if self.debug:
+            print ("Special day?: " + str(self.is_special_day))
+            print ("Special colors: " + str(self.special_day_colors))
 
     def init_show(self):
         RAND_DENSITY = 15
@@ -124,6 +140,15 @@ class GarageController(threading.Thread):
         time.sleep(SLEEP)
         self.fc.put_pixels([])
         time.sleep(SLEEP)
+        
+        show_colors = []
+        for i in range(int(ceil(GRG_LEN / 6))):
+            show_colors.append((255, 0, 0))
+            show_colors.append((255, 255, 0))
+            show_colors.append((0, 255, 0))
+            show_colors.append((0, 255, 255))
+            show_colors.append((0, 0, 255))
+            show_colors.append((255, 0, 255))
 
         is_colored = [False] * GRG_LEN
         pixels = [(0, 0, 0)] * GRG_LEN
@@ -136,7 +161,7 @@ class GarageController(threading.Thread):
                     is_colored[p] = True
 
                 if is_colored[p]:
-                    pixels[p] = self.colors[p]
+                    pixels[p] = show_colors[p]
                 else:
                     pixels[p] = (0, 0, 0)
 
@@ -158,7 +183,7 @@ class GarageController(threading.Thread):
                 if not is_colored[p]:
                     pixels[p] = (128, 140, 65)
                 else:
-                    pixels[p] = self.colors[p]
+                    pixels[p] = show_colors[p]
 
             self.fc.put_pixels(pixels)
             time.sleep(SLEEP)
@@ -290,6 +315,16 @@ class GarageController(threading.Thread):
         time.sleep(0.01)
 
     # Statics
+
+    def special_day_static(self):
+        try:
+            num_colors = len(self.special_day_colors)
+        except TypeError:
+            return
+
+        pixels = []
+        for i in range(GRG_LEN):
+            pixels.append(self.special_day_colors[i % num_colors])
 
     def red_green_static(self):
         pixels = []
