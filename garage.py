@@ -325,7 +325,8 @@ class GarageController(threading.Thread):
 
         pixels = []
         for i in range(GRG_LEN):
-            pixels.append(self.special_day_colors[i % num_colors])
+            pixels.append(((self.special_day_colors[i % num_colors][1]), (self.special_day_colors[i % num_colors][0]),
+                           (self.special_day_colors[i % num_colors][2])))  # Because GRB colors are nasty
 
         self.fc.put_pixels(pixels)
 
