@@ -114,6 +114,7 @@ class GarageController(threading.Thread):
                 self.initialized = False
 
             if self.state == 0 and not self.debug:
+                self.all_off()
                 time.sleep(HIBERNATE)
 
     def test_show(self):
@@ -325,6 +326,8 @@ class GarageController(threading.Thread):
         pixels = []
         for i in range(GRG_LEN):
             pixels.append(self.special_day_colors[i % num_colors])
+
+        self.fc.put_pixels(pixels)
 
     def red_green_static(self):
         pixels = []
