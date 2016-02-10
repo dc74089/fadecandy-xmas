@@ -16,6 +16,7 @@ DAILY_START_PROGRAM = 4
 
 AUTO_ON_ENABLED_SPECIAL = True
 
+SPECIAL_DAY_START = lambda: datetime.now().replace(hour=7, minute=30, second=0)
 START_TIME = lambda: datetime.now().replace(hour=17, minute=30, second=0)
 BEDTIME = lambda: datetime.now().replace(hour=23, minute=30, second=0)
 now = lambda: datetime.now()
@@ -51,9 +52,13 @@ class GarageController(threading.Thread):
 
     def initspecialdays(self):
         self.specialdays[(2, 14)] = ((255, 116, 140), (255, 0, 0), (255, 255, 175)) #Valentines Day
-        self.specialdays[(4, 2)] = ((0, 255, 255), (255, 255, 175)) #Light it up blue
+        self.specialdays[(2, 15)] = ((255, 0, 0), (255, 255, 175), (0, 0, 255))  # President's Day YEARLY
         self.specialdays[(3, 17)] = ((0, 255, 0), (255, 255, 175)) #St. Patrick's
-        self.specialdays[(2, 10)] = ((255, 116, 140), (255, 0, 0), (255, 255, 175))  # DEBUG
+        self.specialdays[(3, 27)] = ((255, 141, 161), (255, 255, 128), (192, 255, 244))  # Easter YEARLY
+        self.specialdays[(4, 2)] = ((0, 255, 255), (255, 255, 175))  # Light it up blue
+        self.specialdays[(5, 5)] = ((255, 0, 0), (0, 255, 0), (255, 255, 175))  # Cinco de Mayo
+        self.specialdays[(7, 4)] = ((255, 0, 0), (255, 255, 175), (0, 0, 255))  # Independance Day
+        self.specialdays[(11, 11)] = ((255, 0, 0), (255, 255, 175), (0, 0, 255))  #Veteran's Day
 
     def setstate(self, state):
         self.state = state
@@ -91,8 +96,8 @@ class GarageController(threading.Thread):
             if self.last_initialized_date < now().date(): #Check if today is a special day, once per day
                 self.check_special_day()
                 self.last_initialized_date = now().date()
-                
-            if self.is_special_day and START_TIME() <= now() <= BEDTIME() and AUTO_ON_ENABLED_SPECIAL \
+
+            if self.is_special_day and SPECIAL_DAY_START() <= now() <= BEDTIME() and AUTO_ON_ENABLED_SPECIAL \
                     and not self.initialized:
                 self.state = 999
                 self.initialized = True
