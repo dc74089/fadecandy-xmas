@@ -2,8 +2,8 @@ import os
 
 from flask import Flask, request, redirect
 from flask.templating import render_template
+
 from garage import GarageController
-from datetime import datetime
 
 app = Flask(__name__)
 
@@ -65,11 +65,13 @@ def test_show():
 @app.route('/enabledebug')
 def enable_debug():
     gc.debug = True
+    return "Debug Enabled"
 
 
 @app.route('/disabledebug')
 def disable_debug():
     gc.debug = False
+    return "Debug Disabled"
 
 
 @app.route('/shutdown')
