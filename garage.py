@@ -53,7 +53,7 @@ class GarageController(threading.Thread):
         self.specialdays[(2, 14)] = ((255, 116, 140), (255, 0, 0), (255, 255, 175)) #Valentines Day
         self.specialdays[(4, 2)] = ((0, 255, 255), (255, 255, 175)) #Light it up blue
         self.specialdays[(3, 17)] = ((0, 255, 0), (255, 255, 175)) #St. Patrick's
-        self.specialdays[(2, 10)] = ((0, 255, 255), (0, 255, 255)) #DEBUG
+        self.specialdays[(2, 10)] = ((255, 0, 0), (255, 255, 0))  # DEBUG
 
     def setstate(self, state):
         self.state = state
