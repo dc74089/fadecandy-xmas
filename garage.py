@@ -44,6 +44,8 @@ class GarageController(threading.Thread):
         self.last_initialized_date = datetime.min.date()
         self.initspecialdays()
         self.check_special_day()
+        self.offsets = [randint(0,1023) for x in range(150)]
+        self.strobestart = 0
 
         if self.fc.can_connect():
             print('Connected')
@@ -64,6 +66,8 @@ class GarageController(threading.Thread):
     def setstate(self, state):
         self.state = state
         print 'State set to %f' % state
+        if state == 14:
+            self.strobestart = theTime()
 
     def run(self):
         while True:
@@ -78,6 +82,10 @@ class GarageController(threading.Thread):
                 self.red_green_twinkle()
             elif self.state == 5:
                 self.cylon()
+            elif self.state == 13:
+                self.halloween()
+            elif self.state == 14:
+                self.strobe()
             # Statics
             elif self.state == 100:
                 self.red_green_static()
@@ -320,6 +328,26 @@ class GarageController(threading.Thread):
             self.position -= 1
 
         time.sleep(0.01)
+
+    def halloween(self):
+        pixels = []
+        for i in range(GRG_LEN):
+            val = math.sin((j() * 360 / PERIOD) + self.offsets[i])
+            if val >= 0:
+                pixels[i] = (165*i, 255*i, 0)
+            else:
+                pixels[i] = (0, -128*i, -128*i)
+        self.fc.put_pixels(pixels)
+
+    def strobe(self):
+        if j() < 300:
+            pixels = [(255, 255, 175) for x in range(GRG_LEN)]
+        else:
+            pixels = [(50, 50, 40) for x in range(GRG_LEN)]
+
+        if self.strobestart + PERIOD > theTime():
+            self.fc.put_pixels(pixels)
+        else setstate(0)
 
     # Statics
 

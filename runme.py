@@ -23,7 +23,7 @@ animations[4] = "Christmas Twinkle"
 
 statics[100] = "Red/Green"
 statics[101] = "White"
-statics[999] = "Custom (must be preset)"
+statics[999] = "Special Day (must be preset)"
 
 print "Runme: I am %i" % os.getpid()
 
@@ -42,12 +42,6 @@ def test():
 @app.route('/admin', methods=['GET'])
 def admin_serve():
     return render_template("admin.html", title="Admin")
-
-
-@app.route('/admin', methods=['POST'])
-def admin_do():
-    print("Got a post!")
-    return "Hey! How'd you get here?"
 
 
 @app.route('/setstate', methods=['POST'])
@@ -74,14 +68,14 @@ def disable_debug():
     return "Debug Disabled"
 
 
-@app.route('/shutdown')
+#@app.route('/shutdown')
 def shutdown():
     shutdown_server()
     os.system('kill %d' % os.getpid())
     return "Shutting down..."
 
 
-def shutdown_server():
+#def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
     if func is None:
         raise RuntimeError('Not running with the Werkzeug Server')
