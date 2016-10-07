@@ -6,7 +6,7 @@ import threading
 class Weather(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
-        
+
         self.wind = 0
         self.gusts = 0
         self.precip_hour = 0
@@ -17,7 +17,7 @@ class Weather(threading.Thread):
             resp = urllib2.urlopen("http://api.wunderground.com/api/3c63d81cbea24dcb/conditions/q/pws:KFLWINTE51.json")
             body = resp.read()
         except URLError:
-            pass
+            print "URLError"
         else:
             try:
                 data = json.loads(body)
