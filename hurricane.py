@@ -2,6 +2,7 @@ import urllib2
 import json
 import time
 import threading
+import math
 
 class Weather(threading.Thread):
     def __init__(self):
@@ -33,10 +34,10 @@ class Weather(threading.Thread):
         time.sleep(60*5)
 
     def get_wind(self):
-        return self.wind
+        return int(ceil(float(self.wind)))
 
     def get_gusts(self):
-        return self.gusts
+        return int(math.ceil(float(self.gusts)))
 
     def get_precip_hour(self):
         return self.precip_hour
