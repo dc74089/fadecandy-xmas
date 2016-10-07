@@ -4,6 +4,7 @@ from datetime import datetime
 from math import *
 from random import randint
 
+from hurricane import Weather
 import opc
 
 GRG_LEN = 150
@@ -46,6 +47,10 @@ class GarageController(threading.Thread):
         self.check_special_day()
         self.offsets = [randint(0,1023) for x in range(150)]
 
+        self.w = Weather()
+        self.w.daemon = True
+        self.w.start()
+
         if self.fc.can_connect():
             print('Connected')
         else:
@@ -84,6 +89,8 @@ class GarageController(threading.Thread):
                 self.halloween()
             elif self.state == 14:
                 self.scare()
+            elif self.state == 911:
+                self.hurricane()
             # Statics
             elif self.state == 100:
                 self.red_green_static()
@@ -343,6 +350,25 @@ class GarageController(threading.Thread):
         self.fc.put_pixels([(0, 0, 0) for x in range(GRG_LEN)])
         time.sleep(2)
         self.setstate(13)
+
+    def hurricane(self):
+        speed = math.floor(self.w.get_wind())
+
+        if speed < 38:
+            color = (255, 0, 0)
+        elif speed < 73:
+            color = (255, 255, 0)
+        elif speed < 95:
+            color = (165, 255, 0)
+        elif speed < 110:
+            color = (0, 255, 0)
+        elif speed < 130:
+            color = (0, 255, 255)
+        else:
+            color = (255, 255, 175)
+
+        pixels = [color for x in range(speed)]
+        self.fc.put_pixels(pixels)
 
     # Statics
 
