@@ -335,8 +335,9 @@ class GarageController(threading.Thread):
 
     def halloween(self):
         pixels = [(0, 0, 0)] * GRG_LEN
+        mj = j()
         for i in range(GRG_LEN):
-            val = sin((j() * 360 / PERIOD) + self.offsets[i])
+            val = sin((mj * 360 / PERIOD) + self.offsets[i])
             if val >= 0:
                 pixels[i] = (165*val, 255*val, 0)
             else:
