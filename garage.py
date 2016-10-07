@@ -338,9 +338,9 @@ class GarageController(threading.Thread):
         for i in range(GRG_LEN):
             val = sin((j() * 360 / PERIOD) + self.offsets[i])
             if val >= 0:
-                pixels[i] = (165*i, 255*i, 0)
+                pixels[i] = (165*val, 255*val, 0)
             else:
-                pixels[i] = (0, -128*i, -128*i)
+                pixels[i] = (0, -128*val, -128*val)
         self.fc.put_pixels(pixels)
 
     def scare(self):
