@@ -10,7 +10,7 @@ import opc
 GRG_LEN = 150
 PERIOD = 1024
 SLEEP = 0.01
-HIBERNATE = 60
+HIBERNATE = 1
 
 AUTO_ON_ENABLED_DAILY = False
 DAILY_START_PROGRAM = 4
@@ -235,7 +235,6 @@ class GarageController(threading.Thread):
         for i in range(GRG_LEN):
             pixels.append((0, 0, 0))
         self.fc.put_pixels(pixels)
-        time.sleep(1)
 
     def fade(self):
         pixels = []
@@ -337,7 +336,7 @@ class GarageController(threading.Thread):
     def halloween(self):
         pixels = []
         for i in range(GRG_LEN):
-            val = math.sin((j() * 360 / PERIOD) + self.offsets[i])
+            val = sin((j() * 360 / PERIOD) + self.offsets[i])
             if val >= 0:
                 pixels[i] = (165*i, 255*i, 0)
             else:
