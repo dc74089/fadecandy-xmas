@@ -352,7 +352,8 @@ class GarageController(threading.Thread):
         self.setstate(13)
 
     def hurricane(self):
-        speed = int(ceil(self.w.get_wind()))
+        #speed = int(ceil(self.w.get_wind()))
+        speed = randint(145)
 
         if speed < 38:
             color = (255, 0, 0)
@@ -369,7 +370,7 @@ class GarageController(threading.Thread):
 
         pixels = [(0, 0, 0) for x in range(GRG_LEN)]
         for x in range(speed):
-            pixels[x] = color 
+            pixels[x] = color
         pixels[1] = color
         self.fc.put_pixels(pixels)
 
