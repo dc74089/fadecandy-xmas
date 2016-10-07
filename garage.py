@@ -335,14 +335,27 @@ class GarageController(threading.Thread):
 
     def halloween(self):
         pixels = [(0, 0, 0)] * GRG_LEN
-        mj = j()
+        tt = theTime()
         for i in range(GRG_LEN):
-            val = sin((mj * 360 / PERIOD) + self.offsets[i])
-            if val >= 0:
-                pixels[i] = (165*val, 255*val, 0)
-            else:
-                pixels[i] = (0, -128*val, -128*val)
+            pixels[i] = self.fade(tt)
         self.fc.put_pixels(pixels)
+
+    def fade(self, time):
+        pd = 5000
+        qtr = pd/4
+        time = time % pd
+        if time <= pd/2:
+            if time <= qtr:
+                sc = time/qtr
+            else:
+                sc = 1-((time-qtr)/qtr)
+            return (165*sc, 255*sc, 0)
+        else:
+            if time < 3*qtr:
+                sc = (time-(2*qtr))/qtr
+            else:
+                sc = 1-((time-(2*qtr))/qtr)
+            return (0, 150*sc, 128*sc)
 
     def scare(self):
         self.fc.put_pixels([(255, 255, 175)] * GRG_LEN)
