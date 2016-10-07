@@ -334,7 +334,7 @@ class GarageController(threading.Thread):
         time.sleep(0.01)
 
     def halloween(self):
-        pixels = []
+        pixels = [(0, 0, 0)] * GRG_LEN
         for i in range(GRG_LEN):
             val = sin((j() * 360 / PERIOD) + self.offsets[i])
             if val >= 0:
@@ -344,9 +344,9 @@ class GarageController(threading.Thread):
         self.fc.put_pixels(pixels)
 
     def scare(self):
-        self.fc.put_pixels([(255, 255, 175) for x in range(GRG_LEN)])
+        self.fc.put_pixels([(255, 255, 175)] * GRG_LEN)
         time.sleep(0.5)
-        self.fc.put_pixels([(0, 0, 0) for x in range(GRG_LEN)])
+        self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
         time.sleep(2)
         self.setstate(13)
 
