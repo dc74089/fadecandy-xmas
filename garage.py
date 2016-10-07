@@ -352,7 +352,7 @@ class GarageController(threading.Thread):
         self.setstate(13)
 
     def hurricane(self):
-        speed = math.floor(self.w.get_wind())
+        speed = floor(self.w.get_wind())
 
         if speed < 38:
             color = (255, 0, 0)
