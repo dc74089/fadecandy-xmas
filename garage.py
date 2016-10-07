@@ -374,6 +374,8 @@ class GarageController(threading.Thread):
         pixels[1] = color
         self.fc.put_pixels(pixels)
 
+        time.sleep(5)
+
     # Statics
 
     def special_day_static(self):
