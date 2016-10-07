@@ -367,8 +367,10 @@ class GarageController(threading.Thread):
         else:
             color = (255, 255, 175)
 
-        pixels = [color for x in range(speed)]
-        pixels[0] = color
+        pixels = [(0, 0, 0) for x in range(GRG_LEN)]
+        for x in range(speed):
+            pixels[x] = color 
+        pixels[1] = color
         self.fc.put_pixels(pixels)
 
     # Statics
