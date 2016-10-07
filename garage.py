@@ -352,7 +352,7 @@ class GarageController(threading.Thread):
         self.setstate(13)
 
     def hurricane(self):
-        speed = int(floor(self.w.get_wind()))
+        speed = int(ceil(self.w.get_wind()))
 
         if speed < 38:
             color = (255, 0, 0)
@@ -368,6 +368,7 @@ class GarageController(threading.Thread):
             color = (255, 255, 175)
 
         pixels = [color for x in range(speed)]
+        pixels[0] = color
         self.fc.put_pixels(pixels)
 
     # Statics
