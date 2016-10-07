@@ -14,24 +14,25 @@ class Weather(threading.Thread):
         self.precip_day = 0
 
     def run(self):
-        try:
-            resp = urllib2.urlopen("http://api.wunderground.com/api/3c63d81cbea24dcb/conditions/q/pws:KFLWINTE51.json")
-            body = resp.read()
-        except URLError:
-            print "URLError"
-        else:
+        while True:
             try:
-                data = json.loads(body)
-                self.wind = data["current_observation"]["wind_mph"]
-                self.gusts = data["current_observation"]["wind_gust_mph"]
-                self.precip_hour = data["current_observation"]["precip_1hr_in"]
-                self.precip_day = data["current_observation"]["precip_today_in"]
+                resp = urllib2.urlopen("http://api.wunderground.com/api/3c63d81cbea24dcb/conditions/q/pws:KFLWINTE51.json")
+                body = resp.read()
+            except URLError:
+                print "URLError"
+            else:
+                try:
+                    data = json.loads(body)
+                    self.wind = data["current_observation"]["wind_mph"]
+                    self.gusts = data["current_observation"]["wind_gust_mph"]
+                    self.precip_hour = data["current_observation"]["precip_1hr_in"]
+                    self.precip_day = data["current_observation"]["precip_today_in"]
 
-                print "Got wind %d" % self.wind
-            except Exception:
-                pass
+                    print "Got wind %d" % self.wind
+                except Exception:
+                    pass
 
-        time.sleep(60*5)
+            time.sleep(60*5)
 
     def get_wind(self):
         return int(ceil(float(self.wind)))
