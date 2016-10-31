@@ -364,15 +364,14 @@ class GarageController(threading.Thread):
             return (0, 150*sc, 128*sc)
 
     def scare(self):
-        for i in range(10):
+        for i in range(50):
             self.fc.put_pixels([(255, 255, 175)] * GRG_LEN)
             self.fc.put_pixels([(255, 255, 175)] * GRG_LEN)
-            time.sleep(0.1)
+            time.sleep(0.02)
             self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
             self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
-            time.sleep(0.1)
+            time.sleep(0.02)
         self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
-        time.sleep(2)
         self.setstate(999)
 
     def hurricane(self):
