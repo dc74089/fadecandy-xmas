@@ -65,7 +65,7 @@ class GarageController(threading.Thread):
         self.specialdays[(5, 5)] = ((255, 0, 0), (0, 255, 0), (255, 255, 175))  # Cinco de Mayo
         self.specialdays[(5, 30)] = ((0, 0, 255), (255, 255, 175), (255, 0, 0)) # Memorial Day YEARLY
         self.specialdays[(7, 4)] = ((255, 0, 0), (255, 255, 175), (0, 0, 255))  # Independence Day
-        self.specialdays[(10, 31)] = ((255, 255, 175), (165, 255, 0)) #Halloween
+        self.specialdays[(10, 31)] = ((150, 0, 128), (255, 165, 0)) #Halloween
         self.specialdays[(11, 11)] = ((255, 0, 0), (255, 255, 175), (0, 0, 255)) # Veteran's Day
 
     def setstate(self, state):
@@ -335,10 +335,16 @@ class GarageController(threading.Thread):
 
     def halloween(self):
         pixels = [(0, 0, 0)] * GRG_LEN
-        tt = theTime()
-        for i in range(GRG_LEN):
-            pixels[i] = self.fade(tt)
+        jval = j() * 100
+        for i in range(0, GRG_LEN, 2):
+            val = PERIOD - jval + self.offsets[i]
+            val /= float((PERIOD + 1024))
+            print(val)
+            pixels[i] = (165*val, 255*val, 0)
+            pixels[i+1] = (0, 150*val, 128*val)
+
         self.fc.put_pixels(pixels)
+        time.sleep(0.02)
 
     def fade(self, time):
         pd = 5000
@@ -358,11 +364,16 @@ class GarageController(threading.Thread):
             return (0, 150*sc, 128*sc)
 
     def scare(self):
-        self.fc.put_pixels([(255, 255, 175)] * GRG_LEN)
-        time.sleep(0.5)
+        for i in range(10):
+            self.fc.put_pixels([(255, 255, 175)] * GRG_LEN)
+            self.fc.put_pixels([(255, 255, 175)] * GRG_LEN)
+            time.sleep(0.1)
+            self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
+            self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
+            time.sleep(0.1)
         self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
         time.sleep(2)
-        self.setstate(13)
+        self.setstate(999)
 
     def hurricane(self):
         speed = self.w.get_gusts()

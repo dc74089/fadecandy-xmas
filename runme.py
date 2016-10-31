@@ -7,7 +7,7 @@ from garage import GarageController
 
 app = Flask(__name__)
 
-gc = GarageController()
+gc = GarageController(ip='192.168.0.123:7890')
 gc.daemon = True
 gc.start()
 
@@ -20,9 +20,9 @@ animations[2] = "Red/Green Wipe"
 animations[3] = "White Twinkle"
 animations[4] = "Christmas Twinkle"
 animations[911] = "Hurricane Monitor"
-#animations[13] = "Halloween" #App Only
-#animations[14] = "Scare" #App Only
-# animations[5] = "Cylon" #UGLY
+animations[13] = "Halloween" #App Only
+animations[14] = "Scare" #App Only
+#animations[5] = "Cylon" #UGLY
 
 statics[100] = "Red/Green"
 statics[101] = "White"
