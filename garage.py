@@ -364,13 +364,13 @@ class GarageController(threading.Thread):
             return (0, 150*sc, 128*sc)
 
     def scare(self):
-        for i in range(50):
+        for i in range(25):
             self.fc.put_pixels([(255, 255, 175)] * GRG_LEN)
             self.fc.put_pixels([(255, 255, 175)] * GRG_LEN)
             time.sleep(0.02)
             self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
             self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
-            time.sleep(0.02)
+            time.sleep(0.03)
         self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
         self.setstate(999)
 
