@@ -89,7 +89,7 @@ class GarageController(threading.Thread):
                 self.halloween()
             elif self.state == 14:
                 self.scare()
-            elif self.state == 911:
+            elif self.state == 901:
                 self.hurricane()
             # Statics
             elif self.state == 100:
