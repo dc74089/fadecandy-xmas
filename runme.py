@@ -7,7 +7,7 @@ from garage import GarageController
 
 app = Flask(__name__)
 
-gc = GarageController(ip='192.168.0.123:7890')
+gc = GarageController()
 gc.daemon = True
 gc.start()
 

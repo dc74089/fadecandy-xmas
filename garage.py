@@ -52,7 +52,7 @@ class GarageController(threading.Thread):
         self.w.start()
 
         if self.fc.can_connect():
-            print('Connected')
+            print('Connected to Fadecandy')
         else:
             print('WARNING: could not connect to fadecandy')
 
@@ -347,23 +347,6 @@ class GarageController(threading.Thread):
 
         self.fc.put_pixels(pixels)
         time.sleep(0.02)
-
-    def fade(self, time):
-        pd = 5000
-        qtr = pd/4
-        time = time % pd
-        if time <= pd/2:
-            if time <= qtr:
-                sc = time/qtr
-            else:
-                sc = 1-((time-qtr)/qtr)
-            return (165*sc, 255*sc, 0)
-        else:
-            if time < 3*qtr:
-                sc = (time-(2*qtr))/qtr
-            else:
-                sc = 1-((time-(2*qtr))/qtr)
-            return (0, 150*sc, 128*sc)
 
     def scare(self):
         for i in range(25):
