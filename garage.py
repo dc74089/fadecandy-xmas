@@ -60,15 +60,15 @@ class GarageController(threading.Thread):
         self.specialdays[(2, 14)] = ((255, 116, 140), (255, 0, 0), (255, 255, 175)) # Valentines Day
         self.specialdays[(2, 15)] = ((255, 0, 0), (255, 255, 175), (0, 0, 255))  # President's Day YEARLY
         self.specialdays[(3, 17)] = ((0, 255, 0), (255, 255, 175)) # St. Patrick's
-        self.specialdays[(3, 27)] = ((255, 141, 161), (255, 255, 128), (192, 255, 244))  # Easter YEARLY
         self.specialdays[(4, 2)] = ((0, 170, 255), (255, 255, 175))  # Light it up blue
+        self.specialdays[(4, 16)] = ((255, 141, 161), (255, 255, 128), (192, 255, 244))  # Easter YEARLY
         self.specialdays[(5, 5)] = ((255, 0, 0), (0, 255, 0), (255, 255, 175))  # Cinco de Mayo
-        self.specialdays[(5, 30)] = ((0, 0, 255), (255, 255, 175), (255, 0, 0)) # Memorial Day YEARLY
+        self.specialdays[(5, 29)] = ((0, 0, 255), (255, 255, 175), (255, 0, 0)) # Memorial Day YEARLY
         self.specialdays[(7, 4)] = ((255, 0, 0), (255, 255, 175), (0, 0, 255))  # Independence Day
         self.specialdays[(10, 31)] = ((150, 0, 128), (255, 165, 0)) #Halloween
         self.specialdays[(11, 11)] = ((255, 0, 0), (255, 255, 175), (0, 0, 255)) # Veteran's Day
-        self.specialdays[(11, 23)] = ((255, 165, 0), (255, 255, 0), (255, 0, 0)) # Thanksgiving Eve YEARLY
-        self.specialdays[(11, 24)] = ((255, 165, 0), (255, 255, 0), (255, 0, 0)) # Thanksgiving YEARLY
+        self.specialdays[(11, 22)] = ((255, 165, 0), (255, 255, 0), (255, 0, 0)) # Thanksgiving Eve YEARLY
+        self.specialdays[(11, 23)] = ((255, 165, 0), (255, 255, 0), (255, 0, 0)) # Thanksgiving YEARLY
 
     def setstate(self, state):
         self.state = state
