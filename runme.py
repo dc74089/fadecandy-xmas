@@ -22,7 +22,7 @@ animations[4] = "Christmas Twinkle"
 animations[901] = "Hurricane Monitor"
 #animations[13] = "Halloween" #App Only
 #animations[14] = "Scare" #App Only
-#animations[5] = "Cylon" #UGLY
+#animations[5] = "Cylon" #Ugly
 
 statics[100] = "Red/Green"
 statics[101] = "White"
@@ -52,6 +52,11 @@ def set_state_from_args():
     set_state_if_int(request.form['routine'])
     return redirect("/")
 
+@app.route('/setstate', methods=['GET'])
+def set_state_from_get():
+    set_state_if_int(request.args.get('s'))
+    return "OK"
+
 
 @app.route('/testshow')
 def test_show():
@@ -78,7 +83,7 @@ def shutdown():
     return "Shutting down..."
 
 
-#def shutdown_server():
+def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
     if func is None:
         raise RuntimeError('Not running with the Werkzeug Server')
