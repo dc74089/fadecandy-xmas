@@ -91,6 +91,8 @@ class GarageController(threading.Thread):
                 self.halloween()
             elif self.state == 14:
                 self.scare()
+            elif self.state == 99:
+                self.alert()
             elif self.state == 901:
                 self.hurricane()
             # Statics
@@ -358,6 +360,15 @@ class GarageController(threading.Thread):
             time.sleep(0.03)
         self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
         self.setstate(999)
+        
+    def alert(self):
+        self.fc.put_pixels([255, 0, 0] * GRG_LEN)
+        
+        time.sleep(0.5)
+        
+        self.fc.put_pixels([0, 0, 0] * GRG_LEN)
+        
+        time.sleep(0.5)
 
     def hurricane(self):
         speed = self.w.get_gusts()
