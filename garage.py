@@ -362,7 +362,7 @@ class GarageController(threading.Thread):
         self.setstate(999)
         
     def alert(self):
-        self.fc.put_pixels([(255, 0, 0)] * GRG_LEN)
+        self.fc.put_pixels([(0, 255, 0)] * GRG_LEN)
         time.sleep(0.5)
         self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
         time.sleep(0.5)
