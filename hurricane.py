@@ -18,7 +18,7 @@ class Weather(threading.Thread):
             try:
                 resp = urllib2.urlopen("http://api.wunderground.com/api/3c63d81cbea24dcb/conditions/q/pws:KFLWINTE51.json")
                 body = resp.read()
-            except URLError:
+            except urllib2.URLError:
                 print "URLError"
             else:
                 try:
