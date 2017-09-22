@@ -57,11 +57,18 @@ def set_state_from_get():
     set_state_if_int(request.args.get('s'))
     return "OK"
 
-
 @app.route('/testshow')
 def test_show():
     gc.test_show()
     return "Starting show..."
+
+@app.route('/opengarage')
+def open_garage():
+    gc.g_open = True
+
+@app.route('/closegarage')
+def close_garage():
+    gc.g_close = False
 
 
 @app.route('/enabledebug')

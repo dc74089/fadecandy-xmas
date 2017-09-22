@@ -36,7 +36,6 @@ class GarageController(threading.Thread):
         self.direction = True
         self.position = 0
         self.initialized = False
-        self.manual_show_test = False
         self.timetillon = datetime.now().time()
         self.timetilloff = datetime.now().time()
         self.specialdays = {}
@@ -46,6 +45,11 @@ class GarageController(threading.Thread):
         self.initspecialdays()
         self.check_special_day()
         self.offsets = [randint(0,1023) for x in range(150)]
+
+        #One-off events
+        self.manual_show_test = False
+        self.g_open = False
+        self.g_close = False
 
         self.w = Weather()
         self.w.daemon = True
@@ -124,6 +128,12 @@ class GarageController(threading.Thread):
                 self.init_show()
                 self.manual_show_test = False
                 self.state = 0
+
+            if self.g_open:
+                self.garage_open()
+
+            if self.g_close:
+                self.garage_close()
 
             if AUTO_ON_ENABLED_DAILY and START_TIME() <= now() <= BEDTIME() and not self.initialized\
                     and not self.is_special_day: #Daily Init
@@ -366,6 +376,37 @@ class GarageController(threading.Thread):
         time.sleep(0.5)
         self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
         time.sleep(0.5)
+
+    def garage_open(self):
+        HALF_LEN = GRG_LEN / 2
+        for i in range(HALF_LEN):
+            pixels = []
+            for a in range(HALF_LEN - i):
+                pixels.append((155,255,0))
+            for b in range(i * 2):
+                pixels.append((0,0,0))
+            for c in range(HALF_LEN - i):
+                pixels.append((155,255,0))
+            self.fc.put_pixels(pixels)
+            time.sleep(0.04)
+
+        time.sleep(1)
+
+    def garage_close(self):
+        HALF_LEN = GRG_LEN / 2
+        for i in range(HALF_LEN):
+            pixels = []
+            for a in range(i):
+                pixels.append((155,255,0))
+            for b in range(GRG_LEN - (i * 2)):
+                pixels.append((0,0,0))
+            for c in range(i):
+                pixels.append((155,255,0))
+
+            self.fc.put_pixels(pixels)
+            time.sleep(0.04)
+
+        time.sleep(1)
 
     def hurricane(self):
         speed = self.w.get_gusts()
