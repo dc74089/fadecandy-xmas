@@ -370,7 +370,7 @@ class GarageController(threading.Thread):
             time.sleep(0.03)
         self.fc.put_pixels([(0, 0, 0)] * GRG_LEN)
         self.setstate(999)
-        
+
     def alert(self):
         self.fc.put_pixels([(0, 255, 0)] * GRG_LEN)
         time.sleep(0.5)
@@ -390,6 +390,7 @@ class GarageController(threading.Thread):
             self.fc.put_pixels(pixels)
             time.sleep(0.04)
 
+        self.g_open = False
         time.sleep(1)
 
     def garage_close(self):
@@ -406,6 +407,7 @@ class GarageController(threading.Thread):
             self.fc.put_pixels(pixels)
             time.sleep(0.04)
 
+        self.g_close = False
         time.sleep(1)
 
     def hurricane(self):
