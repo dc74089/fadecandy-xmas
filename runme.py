@@ -28,8 +28,6 @@ statics[100] = "Red/Green"
 statics[101] = "White"
 statics[999] = "Special Day (must be preset)"
 
-print "Runme: I am %i" % os.getpid()
-
 
 @app.route('/')
 def index():
@@ -101,11 +99,11 @@ def set_state_if_int(newstate):
     try:
         state_to_set = int(newstate)
         gc.setstate(state_to_set)
-        print "New state: %i" % state_to_set
+        print("New state: %i" % state_to_set)
     except ValueError:
-        print "Not an int"
+        print("Not an int")
 
 
 if __name__ == '__main__':
     app.debug = False
-    app.run(host="0.0.0.0", port=1150)
+    app.run(host="0.0.0.0", port=80)
