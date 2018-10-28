@@ -46,6 +46,8 @@ class GarageController(threading.Thread):
         self.check_special_day()
         self.offsets = [randint(0,1023) for x in range(150)]
 
+        self.halloween_states = [0] * GRG_LEN
+
         #One-off events
         self.manual_show_test = False
         self.g_open = False
@@ -350,13 +352,17 @@ class GarageController(threading.Thread):
 
     def halloween(self):
         pixels = [(0, 0, 0)] * GRG_LEN
-        jval = j() * 100
-        for i in range(0, GRG_LEN, 2):
-            val = PERIOD - jval + self.offsets[i]
-            val /= float((PERIOD + 1024))
-            print(val)
-            pixels[i] = (165*val, 255*val, 0)
-            pixels[i+1] = (0, 150*val, 128*val)
+
+        for i in range(0, GRG_LEN):
+            self.halloween_states[i] = max(self.halloween_states[i] - 0.01, 0)
+
+            if(randint(0, 1000) < 10):
+                self.halloween_states[i] = 1
+
+            if i % 2:
+                pixels[i] = (165*self.halloween_states[i], 255*self.halloween_states[i], 0)
+            else:
+                pixels[i] = (0, 150*self.halloween_states[i], 128*self.halloween_states[i])
 
         self.fc.put_pixels(pixels)
         time.sleep(0.02)
