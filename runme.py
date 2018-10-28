@@ -20,8 +20,8 @@ animations[2] = "Red/Green Wipe"
 animations[3] = "White Twinkle"
 animations[4] = "Christmas Twinkle"
 animations[901] = "Hurricane Monitor"
-#animations[13] = "Halloween" #App Only
-#animations[14] = "Scare" #App Only
+animations[13] = "Halloween" #App Only
+animations[14] = "Scare" #App Only
 #animations[5] = "Cylon" #Ugly
 
 statics[100] = "Red/Green"
