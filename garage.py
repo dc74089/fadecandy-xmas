@@ -12,7 +12,7 @@ PERIOD = 1024
 SLEEP = 0.01
 HIBERNATE = 1
 
-AUTO_ON_ENABLED_DAILY = True
+AUTO_ON_ENABLED_DAILY = False
 DAILY_START_PROGRAM = 4
 
 AUTO_ON_ENABLED_SPECIAL = True
@@ -462,7 +462,7 @@ class GarageController(threading.Thread):
         for i in range(int(ceil(GRG_LEN / 4))):
             pixels.append((255, 0, 0))
             pixels.append((255, 0, 0))
-            
+
             pixels.append((0, 255, 0))
             pixels.append((0, 255, 0))
         self.fc.put_pixels(pixels)
