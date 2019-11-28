@@ -74,8 +74,8 @@ class GarageController(threading.Thread):
         self.specialdays[(7, 27)] = ((255, 107, 102), (255, 151, 74), (255, 233, 0), (142, 227, 213), (255, 99, 177))  # Mom's Bday
         self.specialdays[(10, 31)] = ((150, 0, 128), (255, 165, 0)) #Halloween
         self.specialdays[(11, 11)] = ((255, 0, 0), (255, 255, 175), (0, 0, 255)) # Veteran's Day
-        self.specialdays[(11, 21)] = ((255, 165, 0), (255, 255, 0), (255, 0, 0)) # Thanksgiving Eve YEARLY
-        self.specialdays[(11, 22)] = ((255, 165, 0), (255, 255, 0), (255, 0, 0)) # Thanksgiving YEARLY
+        self.specialdays[(11, 27)] = ((255, 165, 0), (255, 255, 0), (255, 0, 0)) # Thanksgiving Eve YEARLY
+        self.specialdays[(11, 28)] = ((255, 165, 0), (255, 255, 0), (255, 0, 0)) # Thanksgiving YEARLY
 
     def setstate(self, state):
         self.state = state
